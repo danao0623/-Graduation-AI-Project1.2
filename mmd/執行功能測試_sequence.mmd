@@ -1,0 +1,67 @@
+```mermaid
+sequenceDiagram
+    actor User
+    participant LoginUI
+    participant AuthenticationController
+    participant TestExecutionUI
+    participant TestExecutionController
+    participant TestResultUI
+    participant TestResult
+    participant TestReport
+
+    User->>LoginUI: input username, password
+    LoginUI->>AuthenticationController: authenticate(username, password)
+    alt Authentication successful
+        AuthenticationController-->>LoginUI: success
+        LoginUI->>User: displayLoginSuccess()
+        User->>TestExecutionUI: selectTestCase(testCaseId)
+        TestExecutionUI->>TestExecutionController: executeTest(testCaseId)
+        loop Test Execution
+            TestExecutionController->>TestExecutionController: executeTestStep()
+            TestExecutionController->>TestResult: saveTestResult(testResult)
+        end
+        TestExecutionController-->>TestExecutionUI: testResult
+        TestExecutionUI->>User: displayTestResult(testResult)
+        User->>TestExecutionUI: selectTestResult
+        TestExecutionUI->>TestExecutionController: uploadTestResult(testResult)
+        alt Upload successful
+            TestExecutionController-->>TestExecutionUI: uploadSuccess
+            TestExecutionUI->>User: displayUploadResult(success)
+        else Upload failed
+            TestExecutionController-->>TestExecutionUI: uploadFailure
+            TestExecutionUI->>User: displayUploadResult(failure)
+        end
+        User->>TestExecutionUI: submitReport(report)
+        TestExecutionUI->>TestExecutionController: saveReport(report)
+        TestExecutionController-->>TestExecutionUI: reportSubmissionResult
+        TestExecutionUI->>User: displayReportSubmissionResult(reportSubmissionResult)
+    else Authentication failed
+        AuthenticationController-->>LoginUI: failure
+        LoginUI->>User: displayLoginFailure()
+    end
+
+    alt Test environment connection failure
+        User->>TestExecutionUI: connectTestEnvironment
+        TestExecutionUI->>TestExecutionController: connectTestEnvironment()
+        TestExecutionController-->>TestExecutionUI: connectionFailure
+        TestExecutionUI->>User: displayErrorMessage
+    else Test case execution failure
+        User->>TestExecutionUI: executeTestCase()
+        TestExecutionUI->>TestExecutionController: executeTestCase()
+        TestExecutionController-->>TestExecutionUI: testCaseExecutionFailure
+        TestExecutionUI->>User: displayErrorMessage
+    end
+
+    alt Test result upload failure
+        User->>TestExecutionUI: uploadTestResult()
+        TestExecutionUI->>TestExecutionController: uploadTestResult()
+        TestExecutionController-->>TestExecutionUI: uploadFailure
+        TestExecutionUI->>User: displayErrorMessage
+    else Report submission failure
+        User->>TestExecutionUI: submitReport()
+        TestExecutionUI->>TestExecutionController: submitReport()
+        TestExecutionController-->>TestExecutionUI: submissionFailure
+        TestExecutionUI->>User: displayErrorMessage
+    end
+
+```

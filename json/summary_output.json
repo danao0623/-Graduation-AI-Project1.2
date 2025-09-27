@@ -1,0 +1,776 @@
+[
+  {
+    "use_case_id": 1,
+    "use_case_name": "新增網站文章",
+    "event_summary": {
+      "正常程序": {
+        "事件列表": [
+          {
+            "event_id": 1,
+            "sequence_no": 1,
+            "type": "Request",
+            "description": "使用者登入網站後台管理系統"
+          },
+          {
+            "event_id": 2,
+            "sequence_no": 2,
+            "type": "Process",
+            "description": "系統驗證使用者身分"
+          },
+          {
+            "event_id": 3,
+            "sequence_no": 3,
+            "type": "Response",
+            "description": "系統顯示後台管理介面"
+          },
+          {
+            "event_id": 4,
+            "sequence_no": 4,
+            "type": "Request",
+            "description": "使用者點擊『新增文章』按鈕"
+          },
+          {
+            "event_id": 5,
+            "sequence_no": 5,
+            "type": "Process",
+            "description": "系統顯示文章新增頁面"
+          },
+          {
+            "event_id": 6,
+            "sequence_no": 6,
+            "type": "Response",
+            "description": "系統呈現文章新增頁面，包含標題、內文、圖片、影片、分類、發佈日期時間等欄位"
+          },
+          {
+            "event_id": 7,
+            "sequence_no": 7,
+            "type": "Request",
+            "description": "使用者輸入文章標題"
+          },
+          {
+            "event_id": 8,
+            "sequence_no": 8,
+            "type": "Process",
+            "description": "系統儲存文章標題"
+          },
+          {
+            "event_id": 9,
+            "sequence_no": 9,
+            "type": "Response",
+            "description": "系統更新頁面顯示已輸入的標題"
+          },
+          {
+            "event_id": 10,
+            "sequence_no": 10,
+            "type": "Request",
+            "description": "使用者輸入文章內容"
+          },
+          {
+            "event_id": 11,
+            "sequence_no": 11,
+            "type": "Process",
+            "description": "系統儲存文章內容"
+          },
+          {
+            "event_id": 12,
+            "sequence_no": 12,
+            "type": "Response",
+            "description": "系統更新頁面顯示已輸入的內容"
+          },
+          {
+            "event_id": 13,
+            "sequence_no": 13,
+            "type": "Request",
+            "description": "使用者上傳圖片(可選)"
+          },
+          {
+            "event_id": 14,
+            "sequence_no": 14,
+            "type": "Process",
+            "description": "系統驗證圖片格式及大小，並儲存圖片"
+          },
+          {
+            "event_id": 15,
+            "sequence_no": 15,
+            "type": "Response",
+            "description": "系統顯示圖片上傳結果，成功或失敗訊息及圖片預覽"
+          },
+          {
+            "event_id": 16,
+            "sequence_no": 16,
+            "type": "Request",
+            "description": "使用者上傳影片(可選)"
+          },
+          {
+            "event_id": 17,
+            "sequence_no": 17,
+            "type": "Process",
+            "description": "系統驗證影片格式及大小，並儲存影片"
+          },
+          {
+            "event_id": 18,
+            "sequence_no": 18,
+            "type": "Response",
+            "description": "系統顯示影片上傳結果，成功或失敗訊息及影片預覽"
+          },
+          {
+            "event_id": 19,
+            "sequence_no": 19,
+            "type": "Request",
+            "description": "使用者選擇文章分類(若系統有此功能)"
+          },
+          {
+            "event_id": 20,
+            "sequence_no": 20,
+            "type": "Process",
+            "description": "系統儲存文章分類"
+          },
+          {
+            "event_id": 21,
+            "sequence_no": 21,
+            "type": "Response",
+            "description": "系統更新頁面顯示已選擇的分類"
+          },
+          {
+            "event_id": 22,
+            "sequence_no": 22,
+            "type": "Request",
+            "description": "使用者設定文章發佈日期和時間(若系統有此功能)"
+          },
+          {
+            "event_id": 23,
+            "sequence_no": 23,
+            "type": "Process",
+            "description": "系統儲存文章發佈日期和時間"
+          },
+          {
+            "event_id": 24,
+            "sequence_no": 24,
+            "type": "Response",
+            "description": "系統更新頁面顯示已設定的發佈日期和時間"
+          },
+          {
+            "event_id": 25,
+            "sequence_no": 25,
+            "type": "Request",
+            "description": "使用者點擊『預覽』按鈕"
+          },
+          {
+            "event_id": 26,
+            "sequence_no": 26,
+            "type": "Process",
+            "description": "系統根據已輸入資料預覽文章內容"
+          },
+          {
+            "event_id": 27,
+            "sequence_no": 27,
+            "type": "Response",
+            "description": "系統顯示文章預覽畫面"
+          },
+          {
+            "event_id": 28,
+            "sequence_no": 28,
+            "type": "Request",
+            "description": "使用者點擊『發佈』按鈕"
+          },
+          {
+            "event_id": 29,
+            "sequence_no": 29,
+            "type": "Process",
+            "description": "系統儲存文章資料並發佈到網站"
+          },
+          {
+            "event_id": 30,
+            "sequence_no": 30,
+            "type": "Response",
+            "description": "系統顯示『文章發佈成功』訊息"
+          }
+        ]
+      },
+      "例外程序": {
+        "事件列表": [
+          {
+            "event_id": 31,
+            "sequence_no": 1,
+            "type": "Request",
+            "description": "使用者輸入使用者名稱和密碼進行登入"
+          },
+          {
+            "event_id": 32,
+            "sequence_no": 2,
+            "type": "Process",
+            "description": "系統驗證使用者名稱和密碼"
+          },
+          {
+            "event_id": 33,
+            "sequence_no": 3,
+            "type": "Response",
+            "description": "系統回饋登入失敗訊息，提示重新輸入"
+          },
+          {
+            "event_id": 34,
+            "sequence_no": 4,
+            "type": "Request",
+            "description": "使用者提交新增文章表單，標題欄位為空"
+          },
+          {
+            "event_id": 35,
+            "sequence_no": 5,
+            "type": "Process",
+            "description": "系統偵測標題欄位為空"
+          },
+          {
+            "event_id": 36,
+            "sequence_no": 6,
+            "type": "Response",
+            "description": "系統顯示提示訊息：請輸入標題"
+          },
+          {
+            "event_id": 37,
+            "sequence_no": 7,
+            "type": "Request",
+            "description": "使用者提交新增文章表單，內文欄位為空"
+          },
+          {
+            "event_id": 38,
+            "sequence_no": 8,
+            "type": "Process",
+            "description": "系統偵測內文欄位為空"
+          },
+          {
+            "event_id": 39,
+            "sequence_no": 9,
+            "type": "Response",
+            "description": "系統顯示提示訊息：請輸入內文"
+          },
+          {
+            "event_id": 40,
+            "sequence_no": 10,
+            "type": "Request",
+            "description": "使用者上傳圖片"
+          },
+          {
+            "event_id": 41,
+            "sequence_no": 11,
+            "type": "Process",
+            "description": "系統處理圖片上傳，並進行格式及大小驗證"
+          },
+          {
+            "event_id": 42,
+            "sequence_no": 12,
+            "type": "Response",
+            "description": "系統回饋圖片上傳失敗訊息，顯示錯誤原因"
+          },
+          {
+            "event_id": 43,
+            "sequence_no": 13,
+            "type": "Request",
+            "description": "使用者上傳影片"
+          },
+          {
+            "event_id": 44,
+            "sequence_no": 14,
+            "type": "Process",
+            "description": "系統處理影片上傳，並進行格式及大小驗證"
+          },
+          {
+            "event_id": 45,
+            "sequence_no": 15,
+            "type": "Response",
+            "description": "系統回饋影片上傳失敗訊息，顯示錯誤原因"
+          },
+          {
+            "event_id": 46,
+            "sequence_no": 16,
+            "type": "Request",
+            "description": "使用者提交新增文章請求"
+          },
+          {
+            "event_id": 47,
+            "sequence_no": 17,
+            "type": "Process",
+            "description": "系統嘗試發佈文章，發生錯誤"
+          },
+          {
+            "event_id": 48,
+            "sequence_no": 18,
+            "type": "Response",
+            "description": "系統顯示錯誤訊息，記錄錯誤日誌，建議聯繫網站管理員"
+          },
+          {
+            "event_id": 49,
+            "sequence_no": 19,
+            "type": "Request",
+            "description": "非網站管理員或無權限使用者嘗試新增文章"
+          },
+          {
+            "event_id": 50,
+            "sequence_no": 20,
+            "type": "Process",
+            "description": "系統驗證使用者權限"
+          },
+          {
+            "event_id": 51,
+            "sequence_no": 21,
+            "type": "Response",
+            "description": "系統拒絕請求並顯示錯誤訊息"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "use_case_id": 2,
+    "use_case_name": "更新個人資料",
+    "event_summary": {
+      "正常程序": {
+        "事件列表": [
+          {
+            "event_id": 52,
+            "sequence_no": 1,
+            "type": "Request",
+            "description": "使用者登入系統"
+          },
+          {
+            "event_id": 53,
+            "sequence_no": 2,
+            "type": "Process",
+            "description": "系統驗證使用者身份"
+          },
+          {
+            "event_id": 54,
+            "sequence_no": 3,
+            "type": "Response",
+            "description": "系統顯示個人資料頁面"
+          },
+          {
+            "event_id": 55,
+            "sequence_no": 4,
+            "type": "Request",
+            "description": "使用者選擇欲修改的欄位"
+          },
+          {
+            "event_id": 56,
+            "sequence_no": 5,
+            "type": "Process",
+            "description": "系統顯示可編輯的欄位"
+          },
+          {
+            "event_id": 57,
+            "sequence_no": 6,
+            "type": "Response",
+            "description": "系統顯示可編輯的欄位"
+          },
+          {
+            "event_id": 58,
+            "sequence_no": 7,
+            "type": "Request",
+            "description": "使用者輸入新的資料"
+          },
+          {
+            "event_id": 59,
+            "sequence_no": 8,
+            "type": "Process",
+            "description": "系統驗證資料正確性"
+          },
+          {
+            "event_id": 60,
+            "sequence_no": 9,
+            "type": "Response",
+            "description": "系統顯示驗證結果訊息(成功或失敗)"
+          },
+          {
+            "event_id": 61,
+            "sequence_no": 10,
+            "type": "Request",
+            "description": "使用者點擊儲存按鈕"
+          },
+          {
+            "event_id": 62,
+            "sequence_no": 11,
+            "type": "Process",
+            "description": "系統更新資料庫中的個人資料"
+          },
+          {
+            "event_id": 63,
+            "sequence_no": 12,
+            "type": "Response",
+            "description": "系統顯示更新成功訊息"
+          },
+          {
+            "event_id": 64,
+            "sequence_no": 13,
+            "type": "Process",
+            "description": "系統更新個人資料頁面顯示內容"
+          },
+          {
+            "event_id": 65,
+            "sequence_no": 14,
+            "type": "Response",
+            "description": "系統顯示更新後的個人資料"
+          }
+        ]
+      },
+      "例外程序": {
+        "事件列表": [
+          {
+            "event_id": 66,
+            "sequence_no": 1,
+            "type": "Request",
+            "description": "使用者提交更新個人資料表單"
+          },
+          {
+            "event_id": 67,
+            "sequence_no": 2,
+            "type": "Process",
+            "description": "系統驗證資料格式"
+          },
+          {
+            "event_id": 68,
+            "sequence_no": 3,
+            "type": "Response",
+            "description": "顯示資料格式錯誤訊息及正確格式提示(若格式錯誤)"
+          },
+          {
+            "event_id": 69,
+            "sequence_no": 4,
+            "type": "Request",
+            "description": "使用者提交更新個人資料表單"
+          },
+          {
+            "event_id": 70,
+            "sequence_no": 5,
+            "type": "Process",
+            "description": "系統驗證必填欄位是否已填寫"
+          },
+          {
+            "event_id": 71,
+            "sequence_no": 6,
+            "type": "Response",
+            "description": "顯示必填欄位未填寫錯誤訊息及需填寫欄位提示(若有必填欄位未填寫)"
+          },
+          {
+            "event_id": 72,
+            "sequence_no": 7,
+            "type": "Request",
+            "description": "使用者提交更新個人資料表單"
+          },
+          {
+            "event_id": 73,
+            "sequence_no": 8,
+            "type": "Process",
+            "description": "系統嘗試更新資料庫"
+          },
+          {
+            "event_id": 74,
+            "sequence_no": 9,
+            "type": "Response",
+            "description": "顯示系統錯誤訊息及建議聯繫管理員(若資料庫連線失敗或其他系統錯誤)"
+          },
+          {
+            "event_id": 75,
+            "sequence_no": 10,
+            "type": "Request",
+            "description": "使用者提交更新個人資料表單"
+          },
+          {
+            "event_id": 76,
+            "sequence_no": 11,
+            "type": "Process",
+            "description": "系統驗證使用者身份"
+          },
+          {
+            "event_id": 77,
+            "sequence_no": 12,
+            "type": "Response",
+            "description": "拒絕存取並顯示錯誤訊息(若非本人嘗試修改)"
+          },
+          {
+            "event_id": 78,
+            "sequence_no": 13,
+            "type": "Request",
+            "description": "使用者輸入驗證碼並提交更新個人資料表單"
+          },
+          {
+            "event_id": 79,
+            "sequence_no": 14,
+            "type": "Process",
+            "description": "系統驗證驗證碼"
+          },
+          {
+            "event_id": 80,
+            "sequence_no": 15,
+            "type": "Response",
+            "description": "顯示驗證碼錯誤訊息(若驗證碼錯誤)"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "use_case_id": 3,
+    "use_case_name": "管理網站圖片",
+    "event_summary": {
+      "正常程序": {
+        "事件列表": [
+          {
+            "event_id": 81,
+            "sequence_no": 1,
+            "type": "Request",
+            "description": "使用者輸入帳號密碼並登入網站後台"
+          },
+          {
+            "event_id": 82,
+            "sequence_no": 2,
+            "type": "Process",
+            "description": "系統驗證帳號密碼"
+          },
+          {
+            "event_id": 83,
+            "sequence_no": 3,
+            "type": "Response",
+            "description": "系統顯示登入成功或失敗訊息"
+          },
+          {
+            "event_id": 84,
+            "sequence_no": 4,
+            "type": "Request",
+            "description": "使用者點擊『圖片管理』模組"
+          },
+          {
+            "event_id": 85,
+            "sequence_no": 5,
+            "type": "Process",
+            "description": "系統載入圖片管理介面"
+          },
+          {
+            "event_id": 86,
+            "sequence_no": 6,
+            "type": "Response",
+            "description": "系統顯示圖片管理介面"
+          },
+          {
+            "event_id": 87,
+            "sequence_no": 7,
+            "type": "Request",
+            "description": "使用者選擇『上傳圖片』功能"
+          },
+          {
+            "event_id": 88,
+            "sequence_no": 8,
+            "type": "Process",
+            "description": "系統顯示圖片上傳介面"
+          },
+          {
+            "event_id": 89,
+            "sequence_no": 9,
+            "type": "Response",
+            "description": "系統顯示圖片上傳介面"
+          },
+          {
+            "event_id": 90,
+            "sequence_no": 10,
+            "type": "Request",
+            "description": "使用者選擇圖片檔案，填寫圖片標題、說明等資訊"
+          },
+          {
+            "event_id": 91,
+            "sequence_no": 11,
+            "type": "Process",
+            "description": "系統驗證圖片格式及大小，並儲存圖片及相關資訊"
+          },
+          {
+            "event_id": 92,
+            "sequence_no": 12,
+            "type": "Response",
+            "description": "系統顯示上傳成功或失敗訊息"
+          },
+          {
+            "event_id": 93,
+            "sequence_no": 13,
+            "type": "Request",
+            "description": "使用者選擇『編輯圖片』功能"
+          },
+          {
+            "event_id": 94,
+            "sequence_no": 14,
+            "type": "Process",
+            "description": "系統顯示圖片編輯介面及相關圖片資訊"
+          },
+          {
+            "event_id": 95,
+            "sequence_no": 15,
+            "type": "Response",
+            "description": "系統顯示圖片編輯介面及相關圖片資訊"
+          },
+          {
+            "event_id": 96,
+            "sequence_no": 16,
+            "type": "Request",
+            "description": "使用者修改圖片資訊或替換圖片檔案"
+          },
+          {
+            "event_id": 97,
+            "sequence_no": 17,
+            "type": "Process",
+            "description": "系統更新圖片資訊及檔案"
+          },
+          {
+            "event_id": 98,
+            "sequence_no": 18,
+            "type": "Response",
+            "description": "系統顯示更新成功或失敗訊息"
+          },
+          {
+            "event_id": 99,
+            "sequence_no": 19,
+            "type": "Request",
+            "description": "使用者選擇『刪除圖片』功能"
+          },
+          {
+            "event_id": 100,
+            "sequence_no": 20,
+            "type": "Process",
+            "description": "系統顯示刪除確認視窗"
+          },
+          {
+            "event_id": 101,
+            "sequence_no": 21,
+            "type": "Response",
+            "description": "系統顯示刪除確認視窗"
+          },
+          {
+            "event_id": 102,
+            "sequence_no": 22,
+            "type": "Request",
+            "description": "使用者確認刪除圖片"
+          },
+          {
+            "event_id": 103,
+            "sequence_no": 23,
+            "type": "Process",
+            "description": "系統刪除圖片及相關資訊"
+          },
+          {
+            "event_id": 104,
+            "sequence_no": 24,
+            "type": "Response",
+            "description": "系統顯示刪除成功或失敗訊息"
+          }
+        ]
+      },
+      "例外程序": {
+        "事件列表": [
+          {
+            "event_id": 105,
+            "sequence_no": 1,
+            "type": "Request",
+            "description": "使用者輸入帳號密碼進行登入"
+          },
+          {
+            "event_id": 106,
+            "sequence_no": 2,
+            "type": "Process",
+            "description": "系統驗證帳號密碼"
+          },
+          {
+            "event_id": 107,
+            "sequence_no": 3,
+            "type": "Response",
+            "description": "系統顯示錯誤訊息：密碼錯誤或帳號不存在，並提示重新登入"
+          },
+          {
+            "event_id": 108,
+            "sequence_no": 4,
+            "type": "Request",
+            "description": "使用者上傳圖片"
+          },
+          {
+            "event_id": 109,
+            "sequence_no": 5,
+            "type": "Process",
+            "description": "系統檢查圖片格式、大小及完整性"
+          },
+          {
+            "event_id": 110,
+            "sequence_no": 6,
+            "type": "Response",
+            "description": "系統顯示錯誤訊息：檔案格式錯誤、檔案大小超過限制或圖片檔案損壞，並提示錯誤原因及解決方法"
+          },
+          {
+            "event_id": 111,
+            "sequence_no": 7,
+            "type": "Request",
+            "description": "使用者編輯圖片"
+          },
+          {
+            "event_id": 112,
+            "sequence_no": 8,
+            "type": "Process",
+            "description": "系統嘗試儲存圖片編輯結果到資料庫"
+          },
+          {
+            "event_id": 113,
+            "sequence_no": 9,
+            "type": "Response",
+            "description": "系統顯示錯誤訊息：資料庫錯誤或權限不足，並記錄錯誤日誌"
+          },
+          {
+            "event_id": 114,
+            "sequence_no": 10,
+            "type": "Request",
+            "description": "使用者刪除圖片"
+          },
+          {
+            "event_id": 115,
+            "sequence_no": 11,
+            "type": "Process",
+            "description": "系統嘗試刪除圖片及相關資料庫記錄"
+          },
+          {
+            "event_id": 116,
+            "sequence_no": 12,
+            "type": "Response",
+            "description": "系統顯示錯誤訊息：資料庫錯誤或圖片被其他頁面引用，並記錄錯誤日誌"
+          },
+          {
+            "event_id": 117,
+            "sequence_no": 13,
+            "type": "Request",
+            "description": "使用者嘗試存取系統"
+          },
+          {
+            "event_id": 118,
+            "sequence_no": 14,
+            "type": "Process",
+            "description": "系統偵測網路連線狀態"
+          },
+          {
+            "event_id": 119,
+            "sequence_no": 15,
+            "type": "Response",
+            "description": "系統顯示錯誤訊息，提示網路連線問題"
+          },
+          {
+            "event_id": 120,
+            "sequence_no": 16,
+            "type": "Request",
+            "description": "使用者嘗試存取系統"
+          },
+          {
+            "event_id": 121,
+            "sequence_no": 17,
+            "type": "Process",
+            "description": "系統偵測伺服器狀態"
+          },
+          {
+            "event_id": 122,
+            "sequence_no": 18,
+            "type": "Response",
+            "description": "系統顯示錯誤訊息，並記錄錯誤日誌，建議聯絡系統管理員"
+          }
+        ]
+      }
+    }
+  }
+]

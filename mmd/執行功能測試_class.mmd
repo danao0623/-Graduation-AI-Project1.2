@@ -1,0 +1,73 @@
+```mermaid
+classDiagram
+class LoginUI <<Boundary>> {
+-username: String
+-password: String
++getUsername(): String
++getPassword(): String
++displayLoginSuccess(): void
++displayLoginFailure(): void
+}
+class TestExecutionUI <<Boundary>> {
+-testCaseId: Integer
+-testResult: String
+-report: String
++selectTestCase(testCaseId: Integer): void
++executeTestCase(): void
++displayTestResult(result: String): void
++inputTestResult(result: String): void
++uploadTestResult(): void
++displayUploadResult(result: String): void
++submitReport(): void
++displayReportSubmissionResult(result: String): void
+}
+class TestResultUI <<Boundary>> {
+-message: String
++displayMessage(message: String): void
+}
+class AuthenticationController <<Control>> {
+}
+class TestExecutionController <<Control>> {
++executeTest(testCaseId: Integer): String
++saveTestResult(testResult: String): void
++uploadTestResult(testResult: String): Boolean
++saveReport(report: String): void
+}
+class TestResult <<Entity>> {
+-testResultId: Integer
+-testCaseId: Integer
+-result: String
+-timestamp: Date
+}
+class TestReport <<Entity>> {
+-reportId: Integer
+-timestamp: Date
+-reportContent: String
+}
+class TestEnvironment <<Entity>> {
+-environmentId: Integer
+-status: String
+}
+class TestSystem <<Entity>> {
+-systemId: Integer
+-name: String
+}
+class User <<Entity>> {
+-userId: Integer
+-username: String
+-password: String
+}
+class TestCase <<Entity>> {
+-testCaseId: Integer
+-description: String
+}
+
+LoginUI --> AuthenticationController
+TestExecutionUI --> TestExecutionController
+TestExecutionController --> TestResult
+TestExecutionController --> TestReport
+TestExecutionUI --> TestResultUI
+TestExecutionController --> TestCase
+TestExecutionController --> TestEnvironment
+AuthenticationController --> User
+```

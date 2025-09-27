@@ -1,0 +1,246 @@
+[
+  {
+    "使用案例名稱": "執行功能測試",
+    "物件結構": [
+      {
+        "類型": "Boundary",
+        "名稱": "LoginUI",
+        "屬性": [
+          "username: String",
+          "password: String"
+        ],
+        "方法": [
+          "getUsername(): String",
+          "getPassword(): String",
+          "displayLoginSuccess(): void",
+          "displayLoginFailure(): void"
+        ]
+      },
+      {
+        "類型": "Boundary",
+        "名稱": "TestExecutionUI",
+        "屬性": [
+          "testCaseId: Integer",
+          "testResult: String",
+          "report: String"
+        ],
+        "方法": [
+          "selectTestCase(testCaseId: Integer): void",
+          "executeTestCase(): void",
+          "displayTestResult(result: String): void",
+          "inputTestResult(result: String): void",
+          "uploadTestResult(): void",
+          "displayUploadResult(result: String): void",
+          "submitReport(): void",
+          "displayReportSubmissionResult(result: String): void"
+        ]
+      },
+      {
+        "類型": "Boundary",
+        "名稱": "TestResultUI",
+        "屬性": [
+          "message: String"
+        ],
+        "方法": [
+          "displayMessage(message: String): void"
+        ]
+      },
+      {
+        "類型": "Control",
+        "名稱": "AuthenticationController",
+        "屬性": [
+          ":"
+        ],
+        "方法": []
+      },
+      {
+        "類型": "Control",
+        "名稱": "TestExecutionController",
+        "屬性": [
+          ":"
+        ],
+        "方法": [
+          "executeTest(testCaseId: Integer): String",
+          "saveTestResult(testResult: String): void",
+          "uploadTestResult(testResult: String): Boolean",
+          "saveReport(report: String): void"
+        ]
+      },
+      {
+        "類型": "Entity",
+        "名稱": "TestResult",
+        "屬性": [
+          "testResultId: Integer",
+          "testCaseId: Integer",
+          "result: String",
+          "timestamp: Date"
+        ],
+        "方法": []
+      },
+      {
+        "類型": "Entity",
+        "名稱": "TestReport",
+        "屬性": [
+          "reportId: Integer",
+          "timestamp: Date",
+          "reportContent: String"
+        ],
+        "方法": []
+      },
+      {
+        "類型": "Entity",
+        "名稱": "TestEnvironment",
+        "屬性": [
+          "environmentId: Integer",
+          "status: String"
+        ],
+        "方法": []
+      },
+      {
+        "類型": "Entity",
+        "名稱": "TestSystem",
+        "屬性": [
+          "systemId: Integer",
+          "name: String"
+        ],
+        "方法": []
+      },
+      {
+        "類型": "Entity",
+        "名稱": "User",
+        "屬性": [
+          "userId: Integer",
+          "username: String",
+          "password: String"
+        ],
+        "方法": []
+      },
+      {
+        "類型": "Entity",
+        "名稱": "TestCase",
+        "屬性": [
+          "testCaseId: Integer",
+          "description: String"
+        ],
+        "方法": []
+      }
+    ]
+  },
+  {
+    "使用案例名稱": "執行效能測試",
+    "物件結構": []
+  },
+  {
+    "使用案例名稱": "提交測試報告",
+    "物件結構": [
+      {
+        "類型": "Boundary",
+        "名稱": "LoginUI",
+        "屬性": [
+          "username: String",
+          "password: String"
+        ],
+        "方法": [
+          "getUsername(): String",
+          "getPassword(): String",
+          "displayLoginSuccess(): void",
+          "displayLoginFailure(message: String): void"
+        ]
+      },
+      {
+        "類型": "Boundary",
+        "名稱": "SubmitReportUI",
+        "屬性": [
+          "selectedTestItems: List<String>",
+          "reportContent: String",
+          "reportNumber: String"
+        ],
+        "方法": [
+          "getSelectedTestItems(): List<String>",
+          "getReportContent(): String",
+          "displayReportInfo(testItemInfo: TestItemInfo): void",
+          "displaySubmissionSuccess(reportNumber: String): void",
+          "displayNetworkError(): void",
+          "displayMissingFieldsError(): void",
+          "displayFormatError(errorMessage: String): void",
+          "displaySystemError(): void",
+          "displayPermissionError(): void"
+        ]
+      },
+      {
+        "類型": "Control",
+        "名稱": "ReportSubmissionController",
+        "屬性": [
+          "currentUser: User",
+          "currentReport: TestReport"
+        ],
+        "方法": [
+          "loadReportInterface(): void",
+          "retrieveTestItemInfo(testItemIds: List<String>): List<TestItemInfo>",
+          "verifyReportContent(): Boolean",
+          "saveReport(report: TestReport): Boolean",
+          "sendNotification(reportNumber: String): Boolean",
+          "handleSystemError(): void"
+        ]
+      },
+      {
+        "類型": "Entity",
+        "名稱": "User",
+        "屬性": [
+          "userId: Integer",
+          "username: String",
+          "password: String",
+          "role: String"
+        ],
+        "方法": [
+          "isValidPassword(password: String): Boolean"
+        ]
+      },
+      {
+        "類型": "Entity",
+        "名稱": "TestItem",
+        "屬性": [
+          "testItemId: Integer",
+          "testItemName: String"
+        ],
+        "方法": [
+          "getCompletedTestCases(): List<TestCase>"
+        ]
+      },
+      {
+        "類型": "Entity",
+        "名稱": "TestCase",
+        "屬性": [
+          "testCaseId: Integer",
+          "testCaseName: String",
+          "testResult: String"
+        ],
+        "方法": []
+      },
+      {
+        "類型": "Entity",
+        "名稱": "TestReport",
+        "屬性": [
+          "reportId: Integer",
+          "submitterId: Integer",
+          "submissionTime: DateTime",
+          "reportContent: String",
+          "testItems: List<TestItem>"
+        ],
+        "方法": []
+      },
+      {
+        "類型": "Boundary",
+        "名稱": "EmailNotification",
+        "屬性": [
+          "recipients: List<String>",
+          "subject: String",
+          "body: String"
+        ],
+        "方法": [
+          "sendEmail(): Boolean"
+        ]
+      }
+    ]
+  }
+]

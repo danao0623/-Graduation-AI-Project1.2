@@ -1,0 +1,74 @@
+```mermaid
+classDiagram
+class LoginUI <<Boundary>> {
+-username: String
+-password: String
++getUsername(): String
++getPassword(): String
++displayLoginSuccess(): void
++displayLoginFailure(message: String): void
+}
+class SubmitReportUI <<Boundary>> {
+-selectedTestItems: List<String>
+-reportContent: String
+-reportNumber: String
++getSelectedTestItems(): List<String>
++getReportContent(): String
++displayReportInfo(testItemInfo: TestItemInfo): void
++displaySubmissionSuccess(reportNumber: String): void
++displayNetworkError(): void
++displayMissingFieldsError(): void
++displayFormatError(errorMessage: String): void
++displaySystemError(): void
++displayPermissionError(): void
+}
+class ReportSubmissionController <<Control>> {
+-currentUser: User
+-currentReport: TestReport
++loadReportInterface(): void
++retrieveTestItemInfo(testItemIds: List<String>): List<TestItemInfo>
++verifyReportContent(): Boolean
++saveReport(report: TestReport): Boolean
++sendNotification(reportNumber: String): Boolean
++handleSystemError(): void
+}
+class User <<Entity>> {
+-userId: Integer
+-username: String
+-password: String
+-role: String
++isValidPassword(password: String): Boolean
+}
+class TestItem <<Entity>> {
+-testItemId: Integer
+-testItemName: String
++getCompletedTestCases(): List<TestCase>
+}
+class TestCase <<Entity>> {
+-testCaseId: Integer
+-testCaseName: String
+-testResult: String
+}
+class TestReport <<Entity>> {
+-reportId: Integer
+-submitterId: Integer
+-submissionTime: DateTime
+-reportContent: String
+-testItems: List<TestItem>
+}
+class EmailNotification <<Boundary>> {
+-recipients: List<String>
+-subject: String
+-body: String
++sendEmail(): Boolean
+}
+
+LoginUI --> ReportSubmissionController
+SubmitReportUI --> ReportSubmissionController
+ReportSubmissionController --> User
+ReportSubmissionController --> TestReport
+TestReport --> TestItem
+TestItem --> TestCase
+ReportSubmissionController --> EmailNotification
+
+```

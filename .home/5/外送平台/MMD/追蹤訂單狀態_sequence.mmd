@@ -1,0 +1,65 @@
+sequenceDiagram
+    actor User
+    participant UI
+    participant OrderTracker
+    participant Order
+    participant Restaurant
+    participant DeliveryPerson
+
+    User->>UI: Input orderID
+    UI->>OrderTracker: trackOrder(orderID)
+    alt OrderID is valid
+        OrderTracker->>OrderTracker: validateOrderID(orderID)
+        OrderTracker->>Order: getOrderStatus()
+        Order-->>OrderTracker: order status, estimatedDeliveryTime, restaurant, deliveryPerson
+        OrderTracker->>Restaurant: getRestaurantInfo()
+        Restaurant-->>OrderTracker: restaurantInfo
+        OrderTracker->>DeliveryPerson: getDeliveryPersonInfo()
+        DeliveryPerson-->>OrderTracker: deliveryPersonInfo
+        OrderTracker->>UI: displayOrderInformation(order)
+        note right of UI: Display order information including estimated delivery time, restaurant and delivery person information.
+    else OrderID is invalid
+        OrderTracker->>UI: displayErrorMessage("Invalid order ID")
+        note right of UI: Display error message: Invalid order ID.
+    end
+
+    User->>UI: refreshPage()
+    UI->>OrderTracker: trackOrder(orderID)
+    alt Order exists
+        OrderTracker->>Order: getOrderStatus()
+        Order-->>OrderTracker: updated order status
+        OrderTracker->>UI: displayOrderInformation(order)
+        note right of UI: Update order information.
+    else Order not found
+        OrderTracker->>UI: displayErrorMessage("Order not found")
+        note right of UI: Display error message: Order not found.
+    end
+
+    User->>UI: Input orderID
+    UI->>OrderTracker: trackOrder(orderID)
+    alt System error occurs during order retrieval
+        OrderTracker->>OrderTracker: handleSystemError()
+        OrderTracker->>UI: displayErrorMessage("System error")
+        note right of UI: Display error message: System temporarily unavailable, please try again later.
+    else Order status retrieved successfully
+        OrderTracker->>Order: getOrderStatus()
+        Order-->>OrderTracker: order status
+        alt Delivery person information missing
+            OrderTracker->>OrderTracker: handleMissingDeliveryInfo()
+            OrderTracker->>UI: displayOrderInformation(order)
+            note right of UI: Display order status, delivery person information shows "Information missing".
+        else Delivery person information available
+            OrderTracker->>DeliveryPerson: getDeliveryPersonInfo()
+            DeliveryPerson-->>OrderTracker: deliveryPersonInfo
+            OrderTracker->>UI: displayOrderInformation(order)
+            note right of UI: Display order information.
+        end
+    end
+
+    loop Order update fails
+        OrderTracker->>Order: setOrderStatus(newStatus) +
+        Order-->>OrderTracker: update failed
+        OrderTracker->>OrderTracker: handleUpdateFailure()
+        OrderTracker->>UI: displayErrorMessage("Update failed")
+        note right of UI: Display error message and log error. If continuously fails, notify the customer.
+    end

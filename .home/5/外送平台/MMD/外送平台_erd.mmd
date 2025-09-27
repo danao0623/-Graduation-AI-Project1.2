@@ -1,0 +1,48 @@
+erDiagram
+    Restaurant {
+        string restaurantID PK
+        string name
+        string address
+    }
+    Menu {
+        int menuId PK
+        int restaurantId FK
+    }
+    Dish {
+        int dishId PK
+        int menuId FK
+        string name
+        double price
+        string imageUrl
+        string description
+    }
+    Order {
+        string orderID PK
+        string status
+        string estimatedDeliveryTime
+        string restaurantID FK
+        string deliveryPersonID FK
+    }
+    DeliveryPerson {
+        string deliveryPersonID PK
+        string name
+        string phone
+    }
+    User {
+        int userId PK
+        string username
+        string password
+        string role
+    }
+    MenuItem {
+        int menuId PK
+        string menuName
+        double price
+        string image
+        string description
+    }
+    Restaurant ||--o{ Menu : has
+    Menu ||--o{ Dish : contains
+    Restaurant ||--o{ Order : receives
+    DeliveryPerson ||--o{ Order : delivers
+    Menu ||--o{ MenuItem : represents

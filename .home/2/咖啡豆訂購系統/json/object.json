@@ -1,0 +1,348 @@
+[
+  {
+    "使用案例名稱": "回覆顧客詢問",
+    "物件結構": [
+      {
+        "類型": "Boundary",
+        "名稱": "LoginUI",
+        "屬性": [
+          "username: String",
+          "password: String"
+        ],
+        "方法": [
+          "getUsername(): String",
+          "getPassword(): String",
+          "displayLoginResult(result: Boolean): Void"
+        ]
+      },
+      {
+        "類型": "Boundary",
+        "名稱": "CustomerInfoUI",
+        "屬性": [
+          "customerID: String",
+          "customerInfo: String"
+        ],
+        "方法": [
+          "getCustomerInfo(): String",
+          "displayCustomerInfo(info: String): Void",
+          "displayError(message:String):Void"
+        ]
+      },
+      {
+        "類型": "Boundary",
+        "名稱": "ReplyUI",
+        "屬性": [
+          "replyContent: String",
+          "replyChannel: String"
+        ],
+        "方法": [
+          "getReplyContent(): String",
+          "getReplyChannel(): String",
+          "displayReplyResult(result: Boolean): Void",
+          "displaySendStatus(status:String):Void",
+          "displayError(message:String):Void"
+        ]
+      },
+      {
+        "類型": "Control",
+        "名稱": "AuthenticationController",
+        "屬性": [],
+        "方法": [
+          "checkNetworkConnection(): Boolean"
+        ]
+      },
+      {
+        "類型": "Control",
+        "名稱": "CustomerSearchController",
+        "屬性": [],
+        "方法": [
+          "searchCustomer(customerID: String): Customer"
+        ]
+      },
+      {
+        "類型": "Control",
+        "名稱": "ReplyController",
+        "屬性": [],
+        "方法": [
+          "checkReplyContent(replyContent:String):Boolean"
+        ]
+      },
+      {
+        "類型": "Entity",
+        "名稱": "Customer",
+        "屬性": [
+          "customerID: String",
+          "customerInfo: String",
+          "inquiries: Inquiry[]"
+        ],
+        "方法": []
+      },
+      {
+        "類型": "Entity",
+        "名稱": "Inquiry",
+        "屬性": [
+          "inquiryID: String",
+          "content: String",
+          "reply: Reply"
+        ],
+        "方法": []
+      },
+      {
+        "類型": "Entity",
+        "名稱": "Reply",
+        "屬性": [
+          "replyID: String",
+          "content: String",
+          "channel: String",
+          "replyTime: DateTime",
+          "staffID: String",
+          "status: String"
+        ],
+        "方法": []
+      },
+      {
+        "類型": "Entity",
+        "名稱": "Staff",
+        "屬性": [
+          "staffID: String",
+          "username: String",
+          "password: String"
+        ],
+        "方法": []
+      },
+      {
+        "類型": "Entity",
+        "名稱": "SystemLog",
+        "屬性": [
+          "logID: String",
+          "logTime: DateTime",
+          "message: String"
+        ],
+        "方法": []
+      }
+    ]
+  },
+  {
+    "使用案例名稱": "處理訂單問題",
+    "物件結構": [
+      {
+        "類型": "Boundary",
+        "名稱": "LoginUI",
+        "屬性": [
+          "username: String",
+          "password: String"
+        ],
+        "方法": [
+          "getLoginInfo(): String"
+        ]
+      },
+      {
+        "類型": "Boundary",
+        "名稱": "OrderManagementUI",
+        "屬性": [
+          "orderID: String",
+          "customerInfo: String",
+          "operationType: String",
+          "updatedInfo: String"
+        ],
+        "方法": [
+          "getOrderInfo(orderID: String): String",
+          "getOperationType(): String",
+          "getUpdatedInfo(): String",
+          "displayOrder(order: Order): void",
+          "displayMessage(message: String): void"
+        ]
+      },
+      {
+        "類型": "Boundary",
+        "名稱": "OrderStatusNotification",
+        "屬性": [
+          "message: String",
+          "customerEmail: String"
+        ],
+        "方法": []
+      },
+      {
+        "類型": "Boundary",
+        "名稱": "LogoutUI",
+        "屬性": [],
+        "方法": [
+          "logout(): void"
+        ]
+      },
+      {
+        "類型": "Control",
+        "名稱": "AuthenticationController",
+        "屬性": [],
+        "方法": [
+          "validateOrderID(orderID: String): Boolean",
+          "validateInput(input: String): Boolean"
+        ]
+      },
+      {
+        "類型": "Control",
+        "名稱": "OrderQueryController",
+        "屬性": [],
+        "方法": []
+      },
+      {
+        "類型": "Control",
+        "名稱": "OrderUpdateController",
+        "屬性": [],
+        "方法": []
+      },
+      {
+        "類型": "Control",
+        "名稱": "ErrorHandlingController",
+        "屬性": [],
+        "方法": [
+          "handleError(error: Exception): String",
+          "logError(error: Exception): void"
+        ]
+      },
+      {
+        "類型": "Control",
+        "名稱": "OrderProcessingController",
+        "屬性": [],
+        "方法": []
+      },
+      {
+        "類型": "Control",
+        "名稱": "SessionManagementController",
+        "屬性": [],
+        "方法": [
+          "startSession(username: String): Boolean",
+          "endSession(): void"
+        ]
+      },
+      {
+        "類型": "Entity",
+        "名稱": "Order",
+        "屬性": [
+          "orderID: String",
+          "customerID: String",
+          "orderStatus: String",
+          "orderDetails: String"
+        ],
+        "方法": [
+          "updateStatus(status: String): void",
+          "updateDetails(details: String): void"
+        ]
+      },
+      {
+        "類型": "Entity",
+        "名稱": "Customer",
+        "屬性": [
+          "customerID: String",
+          "customerName: String",
+          "customerEmail: String",
+          "customerAddress: String"
+        ],
+        "方法": []
+      },
+      {
+        "類型": "Entity",
+        "名稱": "OrderLog",
+        "屬性": [
+          "logID: Integer",
+          "orderID: String",
+          "operationType: String",
+          "operator: String",
+          "timestamp: Date",
+          "details: String"
+        ],
+        "方法": []
+      }
+    ]
+  },
+  {
+    "使用案例名稱": "查詢訂單狀態",
+    "物件結構": [
+      {
+        "類型": "Boundary",
+        "名稱": "LoginUI",
+        "屬性": [
+          "username: String",
+          "password: String"
+        ],
+        "方法": [
+          "getLoginInfo(): String"
+        ]
+      },
+      {
+        "類型": "Boundary",
+        "名稱": "OrderQueryUI",
+        "屬性": [
+          "orderID: String",
+          "customerID: String",
+          "orderStatus: String"
+        ],
+        "方法": [
+          "getOrderID(): String",
+          "getCustomerID(): String",
+          "displayOrderStatus(orderStatus: String): void"
+        ]
+      },
+      {
+        "類型": "Control",
+        "名稱": "AuthenticationController",
+        "屬性": [
+          "loggedInUser: User"
+        ],
+        "方法": [
+          "displayLoginSuccess(): void",
+          "displayLoginFailure(): void",
+          "checkPermission(): Boolean"
+        ]
+      },
+      {
+        "類型": "Control",
+        "名稱": "OrderQueryController",
+        "屬性": [
+          "orderID: String",
+          "customerID: String"
+        ],
+        "方法": [
+          "displayValidationResult(success: Boolean): void",
+          "displayErrorMessage(message: String): void",
+          "logError(errorMessage: String): void"
+        ]
+      },
+      {
+        "類型": "Entity",
+        "名稱": "Order",
+        "屬性": [
+          "orderID: String",
+          "customerID: String",
+          "orderStatus: String"
+        ],
+        "方法": [
+          "getOrderStatus(): String"
+        ]
+      },
+      {
+        "類型": "Entity",
+        "名稱": "User",
+        "屬性": [
+          "userID: String",
+          "username: String",
+          "role: String"
+        ],
+        "方法": [
+          "getUserRole(): String"
+        ]
+      },
+      {
+        "類型": "Entity",
+        "名稱": "Database",
+        "屬性": [
+          "orders: List<Order>"
+        ],
+        "方法": [
+          "getOrder(orderID: String): Order",
+          "getOrder(customerID: String): List<Order>"
+        ]
+      }
+    ]
+  }
+]

@@ -1,0 +1,53 @@
+{
+    "LOG_FILE": {
+        "SYSTEM": {
+            "TYPE": "FileLogger",
+            "NAME": "System",
+            "LEVEL": "WARNING",
+            "FILENAME": "system.log"
+        },
+        "DATABASE": {
+            "TYPE": "FileLogger",
+            "NAME": "Database",
+            "LEVEL": "WARNING",
+            "FILENAME": "database.log"
+        },
+        "LOGIN": {
+            "TYPE": "RotatingFileLogger",
+            "NAME": "Login",
+            "LEVEL": "INFO",
+            "FILENAME": "login.log",
+            "MAX_BYTES": 134217728,
+            "BACKUP_COUNT": 100
+        },
+        "REGISTER": {
+            "TYPE": "FileLogger",
+            "NAME": "Register",
+            "LEVEL": "INFO",
+            "FILENAME": "register.log"
+        },
+        "FORGOT_PASSWORD": {
+            "TYPE": "FileLogger",
+            "NAME": "ForgotPassword",
+            "LEVEL": "WARNING",
+            "FILENAME": "forgot_password.log"
+        },
+        "ACCESS_CONTROL": {
+            "TYPE": "RotatingFileLogger",
+            "NAME": "AccessControl",
+            "LEVEL": "INFO",
+            "FILENAME": "access_control.log",
+            "MAX_BYTES": 134217728,
+            "BACKUP_COUNT": 100
+        },
+        "FILE_MANAGER": {
+            "TYPE": "FileLogger",
+            "NAME": "FileManager",
+            "LEVEL": "WARNING",
+            "FILENAME": "file_manager.log"
+        }
+    },
+    "DATABASE": {
+        "SYSTEM": "sqlite+aiosqlite:///.sqlite/system.db"
+    }
+}

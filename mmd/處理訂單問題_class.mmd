@@ -1,0 +1,85 @@
+```mermaid
+classDiagram
+class LoginScreen <<Boundary>> {
+-username: String
+-password: String
++getLoginInfo(): String
+}
+class OrderManagementSystem <<Boundary>> {
++displayLoginResult(result: Boolean): Void
++displayMainScreen(): Void
++displayOrderInformation(order: Order): Void
++displayOperationInterface(operationType: String): Void
++displayVerificationResult(result: Boolean): Void
++displayErrorMessage(message: String): Void
++displaySuccessMessage(message: String): Void
++displayLogoutMessage(): Void
++displayWarningMessage(message:String):Void
+}
+class OrderQueryScreen <<Boundary>> {
+-orderNumber: String
+-customerInfo: String
++getOrderQueryInfo(): String
+}
+class OrderOperationScreen <<Boundary>> {
+-operationType: String
+-updatedInfo: String
++getOperationInfo(): String
+}
+class OrderStatusNotification <<Boundary>> {
+}
+class OrderProcessingController <<Control>> {
++queryOrder(orderInfo: String): Order
++validateOrderNumber(orderNumber: String): Boolean
++validateInputInfo(inputInfo: String): Boolean
++handleSystemError(): Void
++checkOrderStatus(order:Order):Boolean
++checkCustomerInfo(order:Order):Boolean
++monitorProcessingTime(order:Order):Void
+}
+class Order {
+-orderNumber: String
+-customerID: String
+-orderStatus: String
+-orderDetails: String
+-customerName:String
+-customerAddress:String
++updateStatus(newStatus: String): Void
+}
+class Customer {
+-customerID: String
+-customerName: String
+-customerAddress: String
+-contactInfo:String
+}
+class User {
+-username: String
+-password: String
+-role: String
+}
+class ProcessingResult {
+-orderNumber: String
+-processingTime: DateTime
+-result: String
+-operator:String
+}
+class ErrorLog {
+-errorTime: DateTime
+-errorMessage: String
+-orderNumber:String
+}
+
+LoginScreen --> OrderManagementSystem
+OrderQueryScreen --> OrderManagementSystem
+OrderOperationScreen --> OrderManagementSystem
+OrderStatusNotification --> OrderManagementSystem
+OrderQueryScreen --> OrderProcessingController
+OrderOperationScreen --> OrderProcessingController
+OrderProcessingController --> Order
+OrderProcessingController --> Customer
+LoginScreen --> User
+OrderProcessingController --> ProcessingResult
+OrderProcessingController --> ErrorLog
+Order --> Customer
+
+```

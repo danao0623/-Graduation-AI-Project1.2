@@ -1,0 +1,272 @@
+[
+  {
+    "actor": "一般使用者",
+    "use_case_name": "瀏覽遊戲目錄",
+    "description": "使用者瀏覽平台上的所有遊戲，並根據遊戲類型、價格、評價等條件篩選遊戲。",
+    "details": {}
+  },
+  {
+    "actor": "一般使用者",
+    "use_case_name": "購買遊戲",
+    "description": "使用者選擇遊戲後，透過購物車流程完成購買，並選擇付款方式。",
+    "details": {}
+  },
+  {
+    "actor": "一般使用者",
+    "use_case_name": "管理個人帳戶資訊",
+    "description": "使用者修改個人資料、密碼，以及管理個人遊戲庫。",
+    "details": {}
+  },
+  {
+    "actor": "遊戲發行商",
+    "use_case_name": "新增遊戲產品",
+    "description": "遊戲發行商新增遊戲到平台，包含遊戲名稱、描述、圖片、價格等資訊。",
+    "details": {}
+  },
+  {
+    "actor": "遊戲發行商",
+    "use_case_name": "管理遊戲價格與庫存",
+    "description": "遊戲發行商調整遊戲價格及庫存數量。",
+    "details": {}
+  },
+  {
+    "actor": "遊戲發行商",
+    "use_case_name": "查看遊戲銷售數據",
+    "description": "遊戲發行商查看遊戲的銷售數據，包含銷售量、收入等資訊。",
+    "details": {}
+  },
+  {
+    "actor": "客服人員",
+    "use_case_name": "回覆使用者提問",
+    "description": "客服人員透過平台的訊息系統回覆使用者的提問。",
+    "details": {}
+  },
+  {
+    "actor": "客服人員",
+    "use_case_name": "處理訂單問題",
+    "description": "客服人員處理使用者關於訂單的各種問題，例如：訂單延遲、訂單錯誤等。",
+    "details": {}
+  },
+  {
+    "actor": "客服人員",
+    "use_case_name": "處理退款申請",
+    "description": "客服人員審核並處理使用者的退款申請。",
+    "details": {}
+  },
+  {
+    "actor": "系統管理員",
+    "use_case_name": "管理平台設定",
+    "description": "系統管理員設定平台的各種參數，例如：網站風格、促銷活動等。",
+    "details": {}
+  },
+  {
+    "actor": "系統管理員",
+    "use_case_name": "監控系統效能",
+    "description": "系統管理員監控平台的效能，並及時處理異常情況。",
+    "details": {}
+  },
+  {
+    "actor": "系統管理員",
+    "use_case_name": "管理使用者權限",
+    "description": "系統管理員設定不同使用者的權限。",
+    "details": {}
+  },
+  {
+    "actor": "支付閘道整合人員",
+    "use_case_name": "整合支付閘道系統",
+    "description": "支付閘道整合人員將新的支付閘道系統整合到平台。",
+    "details": {}
+  },
+  {
+    "actor": "支付閘道整合人員",
+    "use_case_name": "測試支付流程",
+    "description": "支付閘道整合人員測試平台的支付流程，確保其正常運作。",
+    "details": {}
+  },
+  {
+    "actor": "支付閘道整合人員",
+    "use_case_name": "處理支付相關錯誤",
+    "description": "支付閘道整合人員診斷並解決支付流程中發生的錯誤。",
+    "details": {}
+  },
+  {
+    "actor": "一般使用者",
+    "use_case_name": "瀏覽遊戲目錄",
+    "description": "使用者瀏覽平台上的所有遊戲，並根據遊戲類型、價格、評價等條件篩選遊戲。",
+    "details": {}
+  },
+  {
+    "actor": "一般使用者",
+    "use_case_name": "購買遊戲",
+    "description": "使用者選擇遊戲後，透過購物車流程完成購買，並選擇付款方式。",
+    "details": {}
+  },
+  {
+    "actor": "一般使用者",
+    "use_case_name": "管理個人帳戶資訊",
+    "description": "使用者修改個人資料、密碼，以及管理個人遊戲庫。",
+    "details": {}
+  },
+  {
+    "actor": "遊戲發行商",
+    "use_case_name": "新增遊戲產品",
+    "description": "遊戲發行商新增遊戲到平台，包含遊戲名稱、描述、圖片、價格等資訊。",
+    "details": {}
+  },
+  {
+    "actor": "遊戲發行商",
+    "use_case_name": "管理遊戲價格與庫存",
+    "description": "遊戲發行商調整遊戲價格及庫存數量。",
+    "details": {}
+  },
+  {
+    "actor": "遊戲發行商",
+    "use_case_name": "查看遊戲銷售數據",
+    "description": "遊戲發行商查看遊戲的銷售數據，包含銷售量、收入等資訊。",
+    "details": {}
+  },
+  {
+    "actor": "客服人員",
+    "use_case_name": "回覆使用者提問",
+    "description": "客服人員透過平台的訊息系統回覆使用者的提問。",
+    "details": {}
+  },
+  {
+    "actor": "客服人員",
+    "use_case_name": "處理訂單問題",
+    "description": "客服人員處理使用者關於訂單的各種問題，例如：訂單延遲、訂單錯誤等。",
+    "details": {}
+  },
+  {
+    "actor": "客服人員",
+    "use_case_name": "處理退款申請",
+    "description": "客服人員審核並處理使用者的退款申請。",
+    "details": {}
+  },
+  {
+    "actor": "系統管理員",
+    "use_case_name": "管理平台設定",
+    "description": "系統管理員設定平台的各種參數，例如：網站風格、促銷活動等。",
+    "details": {}
+  },
+  {
+    "actor": "系統管理員",
+    "use_case_name": "監控系統效能",
+    "description": "系統管理員監控平台的效能，並及時處理異常情況。",
+    "details": {}
+  },
+  {
+    "actor": "系統管理員",
+    "use_case_name": "管理使用者權限",
+    "description": "系統管理員設定不同使用者的權限。",
+    "details": {}
+  },
+  {
+    "actor": "支付閘道整合人員",
+    "use_case_name": "整合支付閘道系統",
+    "description": "支付閘道整合人員將新的支付閘道系統整合到平台。",
+    "details": {}
+  },
+  {
+    "actor": "支付閘道整合人員",
+    "use_case_name": "測試支付流程",
+    "description": "支付閘道整合人員測試平台的支付流程，確保其正常運作。",
+    "details": {}
+  },
+  {
+    "actor": "支付閘道整合人員",
+    "use_case_name": "處理支付相關錯誤",
+    "description": "支付閘道整合人員診斷並解決支付流程中發生的錯誤。",
+    "details": {}
+  },
+  {
+    "actor": "一般使用者",
+    "use_case_name": "瀏覽遊戲目錄",
+    "description": "使用者瀏覽平台上的所有遊戲，並根據遊戲類型、價格、評價等條件篩選遊戲。",
+    "details": {}
+  },
+  {
+    "actor": "一般使用者",
+    "use_case_name": "購買遊戲",
+    "description": "使用者選擇遊戲後，透過購物車流程完成購買，並選擇付款方式。",
+    "details": {}
+  },
+  {
+    "actor": "一般使用者",
+    "use_case_name": "管理個人帳戶資訊",
+    "description": "使用者修改個人資料、密碼，以及管理個人遊戲庫。",
+    "details": {}
+  },
+  {
+    "actor": "遊戲發行商",
+    "use_case_name": "新增遊戲產品",
+    "description": "遊戲發行商新增遊戲到平台，包含遊戲名稱、描述、圖片、價格等資訊。",
+    "details": {}
+  },
+  {
+    "actor": "遊戲發行商",
+    "use_case_name": "管理遊戲價格與庫存",
+    "description": "遊戲發行商調整遊戲價格及庫存數量。",
+    "details": {}
+  },
+  {
+    "actor": "遊戲發行商",
+    "use_case_name": "查看遊戲銷售數據",
+    "description": "遊戲發行商查看遊戲的銷售數據，包含銷售量、收入等資訊。",
+    "details": {}
+  },
+  {
+    "actor": "客服人員",
+    "use_case_name": "回覆使用者提問",
+    "description": "客服人員透過平台的訊息系統回覆使用者的提問。",
+    "details": {}
+  },
+  {
+    "actor": "客服人員",
+    "use_case_name": "處理訂單問題",
+    "description": "客服人員處理使用者關於訂單的各種問題，例如：訂單延遲、訂單錯誤等。",
+    "details": {}
+  },
+  {
+    "actor": "客服人員",
+    "use_case_name": "處理退款申請",
+    "description": "客服人員審核並處理使用者的退款申請。",
+    "details": {}
+  },
+  {
+    "actor": "系統管理員",
+    "use_case_name": "管理平台設定",
+    "description": "系統管理員設定平台的各種參數，例如：網站風格、促銷活動等。",
+    "details": {}
+  },
+  {
+    "actor": "系統管理員",
+    "use_case_name": "監控系統效能",
+    "description": "系統管理員監控平台的效能，並及時處理異常情況。",
+    "details": {}
+  },
+  {
+    "actor": "系統管理員",
+    "use_case_name": "管理使用者權限",
+    "description": "系統管理員設定不同使用者的權限。",
+    "details": {}
+  },
+  {
+    "actor": "支付閘道整合人員",
+    "use_case_name": "整合支付閘道系統",
+    "description": "支付閘道整合人員將新的支付閘道系統整合到平台。",
+    "details": {}
+  },
+  {
+    "actor": "支付閘道整合人員",
+    "use_case_name": "測試支付流程",
+    "description": "支付閘道整合人員測試平台的支付流程，確保其正常運作。",
+    "details": {}
+  },
+  {
+    "actor": "支付閘道整合人員",
+    "use_case_name": "處理支付相關錯誤",
+    "description": "支付閘道整合人員診斷並解決支付流程中發生的錯誤。",
+    "details": {}
+  }
+]

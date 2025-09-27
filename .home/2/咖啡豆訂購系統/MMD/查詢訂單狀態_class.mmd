@@ -1,0 +1,8 @@
+classDiagram
+LoginUI --> AuthenticationController
+AuthenticationController --> User
+OrderQueryUI --> OrderQueryController
+OrderQueryController --> Order
+OrderQueryController --> Database
+OrderQueryController --> User
+Order --> Database

@@ -1,0 +1,14 @@
+classDiagram
+AppUI --> LocationService
+AppUI --> NetworkService
+AppUI --> RestaurantSearchController
+AppUI --> RestaurantDataController
+RestaurantSearchController --> Restaurant
+RestaurantSearchController --> Menu
+Restaurant --> Menu
+Menu --> Dish
+AppUI --> Restaurant
+AppUI --> Menu
+AppUI --> Dish
+AppUI --> FilterCriteria
+RestaurantSearchController --> FilterCriteria

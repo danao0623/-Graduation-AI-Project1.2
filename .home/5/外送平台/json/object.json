@@ -1,0 +1,293 @@
+[
+  {
+    "使用案例名稱": "瀏覽餐廳與菜單",
+    "物件結構": [
+      {
+        "類型": "Boundary",
+        "名稱": "AppUI",
+        "屬性": [
+          "locationAuthorizationStatus: Boolean",
+          "restaurantList: Restaurant[]",
+          "selectedRestaurant: Restaurant",
+          "selectedDish: Dish",
+          "filterCriteria: FilterCriteria"
+        ],
+        "方法": [
+          "displayLocationAuthorizationRequest(): Void",
+          "displayRestaurantList(restaurants: Restaurant[]): Void",
+          "displayRestaurantMenu(menu: Menu[]): Void",
+          "displayErrorMessage(message: String): Void",
+          "showSaveSuccessMessage(): Void"
+        ]
+      },
+      {
+        "類型": "Boundary",
+        "名稱": "LocationService",
+        "屬性": [
+          "latitude: Double",
+          "longitude: Double"
+        ],
+        "方法": [
+          "requestLocationAuthorization(): Boolean",
+          "getLocation(): (Double"
+        ]
+      },
+      {
+        "類型": "Boundary",
+        "名稱": "NetworkService",
+        "屬性": [
+          "connectionStatus: Boolean"
+        ],
+        "方法": [
+          "checkNetworkConnection(): Boolean"
+        ]
+      },
+      {
+        "類型": "Control",
+        "名稱": "RestaurantSearchController",
+        "屬性": [
+          "currentLocation: (Double",
+          "restaurants: Restaurant[]",
+          "filteredRestaurants: Restaurant[]"
+        ],
+        "方法": [
+          "filterRestaurants(criteria: FilterCriteria): Restaurant[]",
+          "getRestaurantMenu(restaurantId: Int): Menu[]"
+        ]
+      },
+      {
+        "類型": "Control",
+        "名稱": "RestaurantDataController",
+        "屬性": [
+          ":"
+        ],
+        "方法": [
+          "saveFavoriteRestaurant(restaurant: Restaurant): Void",
+          "saveFavoriteDish(dish: Dish): Void"
+        ]
+      },
+      {
+        "類型": "Entity",
+        "名稱": "Restaurant",
+        "屬性": [
+          "restaurantId: Int",
+          "name: String",
+          "rating: Double",
+          "distance: Double",
+          "photoUrl: String",
+          "menu: Menu[]"
+        ],
+        "方法": []
+      },
+      {
+        "類型": "Entity",
+        "名稱": "Menu",
+        "屬性": [
+          "menuId: Int",
+          "restaurantId: Int",
+          "dishes: Dish[]"
+        ],
+        "方法": []
+      },
+      {
+        "類型": "Entity",
+        "名稱": "Dish",
+        "屬性": [
+          "dishId: Int",
+          "menuId: Int",
+          "name: String",
+          "price: Double",
+          "imageUrl: String",
+          "description: String"
+        ],
+        "方法": []
+      },
+      {
+        "類型": "Entity",
+        "名稱": "FilterCriteria",
+        "屬性": [
+          "minRating: Double",
+          "maxPrice: Double",
+          "cuisineType: String"
+        ],
+        "方法": []
+      }
+    ]
+  },
+  {
+    "使用案例名稱": "追蹤訂單狀態",
+    "物件結構": [
+      {
+        "類型": "Boundary",
+        "名稱": "UI",
+        "屬性": [
+          "orderID: String",
+          "errorMessage: String"
+        ],
+        "方法": [
+          "displayOrderInformation(order: Order): void",
+          "displayErrorMessage(message: String): void",
+          "getOrderID(): String",
+          "refreshPage(): void"
+        ]
+      },
+      {
+        "類型": "Control",
+        "名稱": "OrderTracker",
+        "屬性": [
+          "order: Order"
+        ],
+        "方法": [
+          "trackOrder(orderID: String): Order",
+          "validateOrderID(orderID: String): Boolean",
+          "updateOrder(order: Order): Boolean",
+          "handleSystemError(): void",
+          "handleMissingDeliveryInfo(): void"
+        ]
+      },
+      {
+        "類型": "Entity",
+        "名稱": "Order",
+        "屬性": [
+          "orderID: String",
+          "status: String",
+          "estimatedDeliveryTime: DateTime",
+          "restaurant: Restaurant",
+          "deliveryPerson: DeliveryPerson"
+        ],
+        "方法": [
+          "getOrderStatus(): String",
+          "setOrderStatus(status: String): void"
+        ]
+      },
+      {
+        "類型": "Entity",
+        "名稱": "Restaurant",
+        "屬性": [
+          "restaurantID: String",
+          "name: String",
+          "address: String"
+        ],
+        "方法": [
+          "getRestaurantInfo(): String"
+        ]
+      },
+      {
+        "類型": "Entity",
+        "名稱": "DeliveryPerson",
+        "屬性": [
+          "deliveryPersonID: String",
+          "name: String",
+          "phone: String"
+        ],
+        "方法": [
+          "getDeliveryPersonInfo(): String"
+        ]
+      }
+    ]
+  },
+  {
+    "使用案例名稱": "新增或修改菜單",
+    "物件結構": [
+      {
+        "類型": "Boundary",
+        "名稱": "LoginScreen",
+        "屬性": [
+          "username: String",
+          "password: String"
+        ],
+        "方法": [
+          "getUsername(): String",
+          "getPassword(): String",
+          "displayLoginSuccess(): void",
+          "displayLoginFailure(): void"
+        ]
+      },
+      {
+        "類型": "Boundary",
+        "名稱": "MenuManagementScreen",
+        "屬性": [
+          "menuList: List<MenuItem>"
+        ],
+        "方法": [
+          "displayMenuList(): void",
+          "showAddMenuForm(): void",
+          "showEditMenuForm(menuItem: MenuItem): void",
+          "displaySaveSuccess(): void",
+          "displayError(message: String): void"
+        ]
+      },
+      {
+        "類型": "Boundary",
+        "名稱": "AddEditMenuForm",
+        "屬性": [
+          "menuName: String",
+          "price: Double",
+          "image: Image",
+          "description: String"
+        ],
+        "方法": [
+          "getMenuName(): String",
+          "getPrice(): Double",
+          "getImage(): Image",
+          "getDescription(): String",
+          "setMenuName(name: String): void",
+          "setPrice(price: Double): void",
+          "setImage(image: Image): void",
+          "setDescription(description: String): void"
+        ]
+      },
+      {
+        "類型": "Control",
+        "名稱": "AuthenticationController",
+        "屬性": [
+          "currentUser: User"
+        ],
+        "方法": [
+          "checkUserPermission(): Boolean"
+        ]
+      },
+      {
+        "類型": "Control",
+        "名稱": "MenuManagementController",
+        "屬性": [
+          "menuList: List<MenuItem>"
+        ],
+        "方法": [
+          "loadMenuList(): List<MenuItem>",
+          "addMenuItem(menuItem: MenuItem): Boolean",
+          "updateMenuItem(menuItem: MenuItem): Boolean",
+          "validateMenuItem(menuItem: MenuItem): Boolean"
+        ]
+      },
+      {
+        "類型": "Entity",
+        "名稱": "MenuItem",
+        "屬性": [
+          "menuId: Integer",
+          "menuName: String",
+          "price: Double",
+          "image: Image",
+          "description: String"
+        ],
+        "方法": [
+          "setMenuName(name: String): void",
+          "setPrice(price: Double): void",
+          "setImage(image: Image): void",
+          "setDescription(description: String): void"
+        ]
+      },
+      {
+        "類型": "Entity",
+        "名稱": "User",
+        "屬性": [
+          "userId: Integer",
+          "username: String",
+          "password: String",
+          "role: String"
+        ],
+        "方法": []
+      }
+    ]
+  }
+]

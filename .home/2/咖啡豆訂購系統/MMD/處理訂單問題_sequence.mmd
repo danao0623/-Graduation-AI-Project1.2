@@ -1,0 +1,113 @@
+sequenceDiagram
+    actor CustomerService
+    participant LoginUI
+    participant AuthenticationController
+    participant SessionManagementController
+    participant OrderManagementUI
+    participant OrderQueryController
+    participant OrderUpdateController
+    participant OrderProcessingController
+    participant OrderStatusNotification
+    participant ErrorHandlingController
+    participant Order
+    participant Customer
+    participant OrderLog
+    participant LogoutUI
+
+    CustomerService->>LoginUI: getLoginInfo(username, password)
+    LoginUI->>AuthenticationController: validateInput(username, password)
+    AuthenticationController->>SessionManagementController: startSession(username)
+    alt Authentication successful
+        SessionManagementController-->>AuthenticationController: true
+        AuthenticationController-->>LoginUI: success
+        LoginUI->>CustomerService: display system main screen
+    else Authentication failed
+        SessionManagementController-->>AuthenticationController: false
+        AuthenticationController-->>LoginUI: error message
+    end
+
+    CustomerService->>OrderManagementUI: getOrderInfo(orderID)
+    OrderManagementUI->>OrderQueryController: getOrderInfo(orderID)
+    OrderQueryController->>Order: getOrderInfo(orderID)
+    Order-->>OrderQueryController: order details
+    OrderQueryController-->>OrderManagementUI: order details
+    OrderManagementUI->>CustomerService: displayOrder(order)
+
+    CustomerService->>OrderManagementUI: getOperationType()
+    OrderManagementUI->>CustomerService: display operation interface
+
+    CustomerService->>OrderManagementUI: getUpdatedInfo()
+    OrderManagementUI->>OrderUpdateController: updateOrder(orderID, updatedInfo)
+    OrderUpdateController->>Order: updateStatus(status), updateDetails(details)
+    alt Order update successful
+        Order-->>OrderUpdateController: success
+        OrderUpdateController-->>OrderManagementUI: success message
+        OrderManagementUI->>CustomerService: display success message
+        OrderUpdateController->>OrderStatusNotification: sendNotification(message, customerEmail)
+        note right of OrderStatusNotification: Send email to customer
+    else Order update failed
+        Order-->>OrderUpdateController: error
+        OrderUpdateController->>ErrorHandlingController: handleError(error)
+        ErrorHandlingController->>OrderUpdateController: error message
+        OrderUpdateController-->>OrderManagementUI: error message
+        OrderManagementUI->>CustomerService: display error message
+        ErrorHandlingController->>ErrorHandlingController: logError(error)
+    end
+
+    CustomerService->>OrderManagementUI: displayMessage(message)
+    CustomerService->>OrderManagementUI: recordResult(logInfo)
+    OrderManagementUI->>OrderProcessingController: saveLog(logInfo)
+    OrderProcessingController->>OrderLog: createLog(logInfo)
+    OrderProcessingController-->>OrderManagementUI: success
+    OrderManagementUI->>CustomerService: display success message
+
+    CustomerService->>LogoutUI: logout()
+    LogoutUI->>SessionManagementController: endSession()
+    SessionManagementController-->>LogoutUI: success
+    LogoutUI->>CustomerService: display logout message
+
+    loop Order ID validation
+        CustomerService->>OrderManagementUI: getOrderInfo(orderID)
+        OrderManagementUI->>AuthenticationController: validateOrderID(orderID)
+        alt Order ID invalid
+            AuthenticationController-->>OrderManagementUI: false
+            OrderManagementUI->>CustomerService: display error message
+        else Order ID valid
+            AuthenticationController-->>OrderManagementUI: true
+            break
+        end
+    end
+
+    loop Input validation
+        CustomerService->>OrderManagementUI: getUpdatedInfo()
+        OrderManagementUI->>AuthenticationController: validateInput(updatedInfo)
+        alt Input invalid
+            AuthenticationController-->>OrderManagementUI: false
+            OrderManagementUI->>CustomerService: display error message
+        else Input valid
+            AuthenticationController-->>OrderManagementUI: true
+            break
+        end
+    end
+
+    alt System error
+        OrderProcessingController->>ErrorHandlingController: handleError(error)
+        ErrorHandlingController->>OrderManagementUI: error message
+        OrderManagementUI->>CustomerService: display error message
+        ErrorHandlingController->>ErrorHandlingController: logError(error)
+    end
+
+    alt Incomplete order information
+        OrderQueryController->>Order: checkOrderCompleteness()
+        Order-->>OrderQueryController: incomplete
+        OrderQueryController-->>OrderManagementUI: incomplete message
+        OrderManagementUI->>CustomerService: display incomplete message
+    end
+
+    loop Monitor processing time
+        OrderProcessingController->>OrderProcessingController: checkProcessingTime()
+        alt Time exceeded
+            OrderProcessingController-->>OrderManagementUI: warning message
+            OrderManagementUI->>CustomerService: display warning message
+        end
+    end

@@ -1,0 +1,62 @@
+sequenceDiagram
+    actor User
+    participant LoginUI
+    participant AuthenticationController
+    participant CustomerInfoUI
+    participant CustomerSearchController
+    participant ReplyUI
+    participant ReplyController
+    participant SystemLog
+
+    User->>LoginUI: input username, password
+    LoginUI->>AuthenticationController: getUsername(), getPassword()
+    AuthenticationController->>AuthenticationController: checkNetworkConnection()
+    alt Network connection successful
+        AuthenticationController->>AuthenticationController: checkCredentials()
+        alt Credentials valid
+            AuthenticationController-->>LoginUI: displayLoginResult(true)
+        else Credentials invalid
+            AuthenticationController-->>LoginUI: displayLoginResult(false)
+        end
+    else Network connection failed
+        AuthenticationController-->>LoginUI: displayLoginResult(false)
+        note right of AuthenticationController: Display network error message
+    end
+
+    User->>CustomerInfoUI: input customerID
+    CustomerInfoUI->>CustomerSearchController: getCustomerInfo()
+    CustomerSearchController->>CustomerSearchController: searchCustomer(customerID)
+    alt Customer found
+        CustomerSearchController-->>CustomerInfoUI: displayCustomerInfo(customerInfo)
+    else Customer not found
+        CustomerSearchController-->>CustomerInfoUI: displayError(message)
+        note right of CustomerSearchController: Display error message and search suggestions
+    end
+
+    User->>ReplyUI: input replyContent, replyChannel
+    ReplyUI->>ReplyController: getReplyContent(), getReplyChannel()
+    ReplyController->>ReplyController: checkReplyContent(replyContent)
+    alt Reply content valid
+        ReplyController->>ReplyController: saveReply()
+        ReplyController-->>ReplyUI: displayReplyResult(true)
+        ReplyController->>SystemLog: log reply
+        ReplyController->>ReplyController: sendReply()
+        alt Reply sent successfully
+            ReplyController-->>ReplyUI: displaySendStatus("Success")
+            ReplyController->>SystemLog: update reply status to "Sent"
+        else Reply sent failed
+            ReplyController-->>ReplyUI: displaySendStatus("Failed")
+            ReplyController->>SystemLog: log error
+            note right of ReplyController: Display error message and contact system administrator
+        end
+    else Reply content invalid
+        ReplyController-->>ReplyUI: displayError(message)
+        note right of ReplyController: Display error message and prompt to modify reply content
+    end
+
+    loop Check for incomplete customer information
+        alt Customer information incomplete
+            CustomerSearchController->>CustomerInfoUI: displayError(message)
+            note right of CustomerSearchController: Prompt user to request more information from customer
+        end
+    end

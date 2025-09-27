@@ -1,0 +1,74 @@
+```mermaid
+classDiagram
+    class LoginUI <<Boundary>> {
+        -username: String
+        -password: String
+        +getUsername(): String
+        +getPassword(): String
+        +displayLoginResult(result: String): void
+    }
+    class CustomerInfoUI <<Boundary>> {
+        -customerID: String
+        -customerInfo: String
+        +getCustomerInfo(): String
+        +displayCustomerInfo(info: String): void
+        +displayError(message: String): void
+    }
+    class ReplyUI <<Boundary>> {
+        -replyContent: String
+        -replyChannel: String
+        +getReplyContent(): String
+        +getReplyChannel(): String
+        +displayReplyResult(result: String): void
+        +displaySendStatus(status: String): void
+        +displayModifyReply(message: String): void
+    }
+    class AuthenticationController <<Control>> {
+        +checkNetworkConnection(): Boolean
+    }
+    class CustomerSearchController <<Control>> {
+        +searchCustomer(customerID: String): Customer
+    }
+    class ReplyController <<Control>> {
+        +checkReplyContent(replyContent: String): Boolean
+    }
+    class Customer <<Entity>> {
+        -customerID: String
+        -customerName: String
+        -contactInfo: String
+        -inquiry: String
+        -replyStatus: String
+    }
+    class Reply <<Entity>> {
+        -replyID: String
+        -replyContent: String
+        -replyChannel: String
+        -replyTime: DateTime
+        -staffID: String
+        -customerID: String
+        -replyStatus: String
+    }
+    class Staff <<Entity>> {
+        -staffID: String
+        -username: String
+        -password: String
+    }
+    class SystemLog <<Entity>> {
+        -logID: String
+        -logTime: DateTime
+        -logMessage: String
+    }
+
+    LoginUI --> AuthenticationController
+    AuthenticationController --> Staff
+    CustomerInfoUI --> CustomerSearchController
+    CustomerSearchController --> Customer
+    ReplyUI --> ReplyController
+    ReplyController --> Reply
+    Reply --> Customer
+    Reply --> Staff
+    AuthenticationController --> SystemLog
+    CustomerSearchController --> SystemLog
+    ReplyController --> SystemLog
+
+```

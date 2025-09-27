@@ -1,0 +1,52 @@
+```mermaid
+sequenceDiagram
+    actor Tester
+    participant Performance_Tool
+    participant Website
+    participant Report_System
+
+    Tester->>Performance_Tool: Connect to Website
+    Performance_Tool-->>Tester: Connection Success/Failure
+    alt Connection Success
+        Tester->>Performance_Tool: Set Test Parameters
+        Performance_Tool->>Performance_Tool: Receive and Validate Parameters
+        Performance_Tool-->>Tester: Parameter Setting Result
+        Tester->>Performance_Tool: Start Test
+        Performance_Tool->>Performance_Tool: Execute Test & Collect Data
+        loop While testing
+            Performance_Tool-->>Tester: Test Progress & Preliminary Results
+        end
+        Performance_Tool->>Performance_Tool: Generate Report
+        Performance_Tool-->>Tester: Test Report
+        Tester->>Tester: Analyze Report
+        Tester->>Report_System: Submit Test Result
+        Report_System->>Report_System: Store Result
+        Report_System-->>Tester: Result Stored Successfully
+    else Connection Failure
+        note over Performance_Tool,Tester: Check network connection and website status. Retry test after website recovery.
+    end
+
+    alt Test Execution Error
+        Tester->>Performance_Tool: Execute Performance Test
+        Performance_Tool->>Performance_Tool: Performance Tool Error
+        note over Performance_Tool,Tester: Check tool settings and network connection. Re-run test or use backup tool.
+    end
+
+    alt Website Server Crash during Test
+        Tester->>Performance_Tool: Execute Performance Test
+        Website->>Website: Website Server Crash
+        note over Website,Tester: Record error log and notify relevant teams. Test interrupted.
+    end
+
+    alt Abnormal Test Data
+        Tester->>Performance_Tool: Execute Performance Test
+        Performance_Tool->>Performance_Tool: Abnormal Test Data
+        note over Performance_Tool,Tester: Check test parameters and data collection process. Re-run test or adjust test strategy.
+    end
+
+    alt Test Result Out of Expected Range
+        Tester->>Performance_Tool: Execute Performance Test and get Result
+        Performance_Tool->>Performance_Tool: Analyze Result and find Bottleneck
+        Performance_Tool-->>Tester: Performance Bottleneck Analysis and Improvement Suggestions
+    end
+```

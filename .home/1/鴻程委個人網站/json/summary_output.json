@@ -1,0 +1,674 @@
+[
+  {
+    "use_case_id": 7,
+    "use_case_name": "執行功能測試",
+    "event_summary": {
+      "正常程序": {
+        "事件列表": [
+          {
+            "event_id": 527,
+            "sequence_no": 1,
+            "type": "Request",
+            "description": "測試工程師輸入帳號密碼"
+          },
+          {
+            "event_id": 528,
+            "sequence_no": 2,
+            "type": "Process",
+            "description": "系統驗證帳號密碼"
+          },
+          {
+            "event_id": 529,
+            "sequence_no": 3,
+            "type": "Response",
+            "description": "系統顯示登入成功或失敗訊息，並導向對應頁面"
+          },
+          {
+            "event_id": 530,
+            "sequence_no": 4,
+            "type": "Request",
+            "description": "測試工程師選擇測試案例並執行功能"
+          },
+          {
+            "event_id": 531,
+            "sequence_no": 5,
+            "type": "Process",
+            "description": "系統執行測試案例對應的功能"
+          },
+          {
+            "event_id": 532,
+            "sequence_no": 6,
+            "type": "Response",
+            "description": "系統顯示功能執行結果"
+          },
+          {
+            "event_id": 533,
+            "sequence_no": 7,
+            "type": "Request",
+            "description": "測試工程師輸入測試結果(通過/失敗)"
+          },
+          {
+            "event_id": 534,
+            "sequence_no": 8,
+            "type": "Process",
+            "description": "系統儲存測試結果"
+          },
+          {
+            "event_id": 535,
+            "sequence_no": 9,
+            "type": "Response",
+            "description": "系統顯示測試結果已儲存"
+          },
+          {
+            "event_id": 536,
+            "sequence_no": 10,
+            "type": "Request",
+            "description": "測試工程師選擇上傳測試結果"
+          },
+          {
+            "event_id": 537,
+            "sequence_no": 11,
+            "type": "Process",
+            "description": "系統上傳測試結果至測試管理系統"
+          },
+          {
+            "event_id": 538,
+            "sequence_no": 12,
+            "type": "Response",
+            "description": "系統顯示上傳成功或失敗訊息"
+          },
+          {
+            "event_id": 539,
+            "sequence_no": 13,
+            "type": "Request",
+            "description": "測試工程師提交測試報告"
+          },
+          {
+            "event_id": 540,
+            "sequence_no": 14,
+            "type": "Process",
+            "description": "系統儲存測試報告"
+          },
+          {
+            "event_id": 541,
+            "sequence_no": 15,
+            "type": "Response",
+            "description": "系統顯示測試報告提交成功或失敗訊息"
+          }
+        ]
+      },
+      "例外程序": {
+        "事件列表": [
+          {
+            "event_id": 542,
+            "sequence_no": 1,
+            "type": "Request",
+            "description": "使用者輸入使用者名稱及密碼進行登入"
+          },
+          {
+            "event_id": 543,
+            "sequence_no": 2,
+            "type": "Process",
+            "description": "系統驗證使用者名稱及密碼"
+          },
+          {
+            "event_id": 544,
+            "sequence_no": 3,
+            "type": "Response",
+            "description": "系統顯示登入失敗訊息"
+          },
+          {
+            "event_id": 545,
+            "sequence_no": 4,
+            "type": "Request",
+            "description": "測試工程師嘗試連線測試環境"
+          },
+          {
+            "event_id": 546,
+            "sequence_no": 5,
+            "type": "Process",
+            "description": "系統偵測到測試環境連線失敗或伺服器錯誤"
+          },
+          {
+            "event_id": 547,
+            "sequence_no": 6,
+            "type": "Response",
+            "description": "系統顯示錯誤訊息"
+          },
+          {
+            "event_id": 548,
+            "sequence_no": 7,
+            "type": "Request",
+            "description": "測試工程師執行功能測試案例"
+          },
+          {
+            "event_id": 549,
+            "sequence_no": 8,
+            "type": "Process",
+            "description": "系統執行測試案例並判斷是否通過"
+          },
+          {
+            "event_id": 550,
+            "sequence_no": 9,
+            "type": "Response",
+            "description": "系統顯示測試案例執行失敗訊息"
+          },
+          {
+            "event_id": 551,
+            "sequence_no": 10,
+            "type": "Request",
+            "description": "測試工程師嘗試上傳測試結果"
+          },
+          {
+            "event_id": 552,
+            "sequence_no": 11,
+            "type": "Process",
+            "description": "系統嘗試上傳測試結果，偵測到網路連線問題或系統錯誤"
+          },
+          {
+            "event_id": 553,
+            "sequence_no": 12,
+            "type": "Response",
+            "description": "系統顯示上傳失敗訊息"
+          },
+          {
+            "event_id": 554,
+            "sequence_no": 13,
+            "type": "Request",
+            "description": "測試工程師嘗試提交測試報告"
+          },
+          {
+            "event_id": 555,
+            "sequence_no": 14,
+            "type": "Process",
+            "description": "系統嘗試提交測試報告，偵測到系統錯誤"
+          },
+          {
+            "event_id": 556,
+            "sequence_no": 15,
+            "type": "Response",
+            "description": "系統顯示提交失敗訊息"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "use_case_id": 8,
+    "use_case_name": "執行效能測試",
+    "event_summary": {
+      "正常程序": {
+        "事件列表": [
+          {
+            "event_id": 557,
+            "sequence_no": 1,
+            "type": "Request",
+            "description": "測試工程師使用效能測試工具連接待測網站"
+          },
+          {
+            "event_id": 558,
+            "sequence_no": 2,
+            "type": "Response",
+            "description": "效能測試工具建立與待測網站的連接"
+          },
+          {
+            "event_id": 559,
+            "sequence_no": 3,
+            "type": "Request",
+            "description": "測試工程師設定測試參數"
+          },
+          {
+            "event_id": 560,
+            "sequence_no": 4,
+            "type": "Process",
+            "description": "效能測試工具接收並儲存測試參數"
+          },
+          {
+            "event_id": 561,
+            "sequence_no": 5,
+            "type": "Response",
+            "description": "效能測試工具顯示參數設定結果"
+          },
+          {
+            "event_id": 562,
+            "sequence_no": 6,
+            "type": "Request",
+            "description": "測試工程師啟動效能測試"
+          },
+          {
+            "event_id": 563,
+            "sequence_no": 7,
+            "type": "Process",
+            "description": "效能測試工具根據設定參數執行測試並收集效能數據"
+          },
+          {
+            "event_id": 564,
+            "sequence_no": 8,
+            "type": "Response",
+            "description": "效能測試工具顯示測試進度"
+          },
+          {
+            "event_id": 565,
+            "sequence_no": 9,
+            "type": "Process",
+            "description": "效能測試工具產生測試結果報告"
+          },
+          {
+            "event_id": 566,
+            "sequence_no": 10,
+            "type": "Response",
+            "description": "效能測試工具提供測試結果報告"
+          },
+          {
+            "event_id": 567,
+            "sequence_no": 11,
+            "type": "Request",
+            "description": "測試工程師檢視測試結果報告"
+          },
+          {
+            "event_id": 568,
+            "sequence_no": 12,
+            "type": "Process",
+            "description": "測試工程師分析測試結果"
+          },
+          {
+            "event_id": 569,
+            "sequence_no": 13,
+            "type": "Request",
+            "description": "測試工程師將測試結果記錄到測試報告"
+          },
+          {
+            "event_id": 570,
+            "sequence_no": 14,
+            "type": "Process",
+            "description": "測試報告系統儲存測試結果"
+          },
+          {
+            "event_id": 571,
+            "sequence_no": 15,
+            "type": "Response",
+            "description": "測試報告系統確認測試結果已儲存"
+          }
+        ]
+      },
+      "例外程序": {
+        "事件列表": [
+          {
+            "event_id": 572,
+            "sequence_no": 1,
+            "type": "Request",
+            "description": "網站伺服器崩潰"
+          },
+          {
+            "event_id": 573,
+            "sequence_no": 2,
+            "type": "Process",
+            "description": "記錄錯誤日誌"
+          },
+          {
+            "event_id": 574,
+            "sequence_no": 3,
+            "type": "Process",
+            "description": "通知相關團隊"
+          },
+          {
+            "event_id": 575,
+            "sequence_no": 4,
+            "type": "Response",
+            "description": "測試中斷"
+          },
+          {
+            "event_id": 576,
+            "sequence_no": 5,
+            "type": "Request",
+            "description": "效能測試工具發生錯誤"
+          },
+          {
+            "event_id": 577,
+            "sequence_no": 6,
+            "type": "Process",
+            "description": "檢查工具設定及網路連線"
+          },
+          {
+            "event_id": 578,
+            "sequence_no": 7,
+            "type": "Process",
+            "description": "嘗試重新執行測試"
+          },
+          {
+            "event_id": 579,
+            "sequence_no": 8,
+            "type": "Process",
+            "description": "嘗試使用備用工具"
+          },
+          {
+            "event_id": 580,
+            "sequence_no": 9,
+            "type": "Response",
+            "description": "測試繼續或工具切換完成"
+          },
+          {
+            "event_id": 581,
+            "sequence_no": 10,
+            "type": "Request",
+            "description": "測試數據異常"
+          },
+          {
+            "event_id": 582,
+            "sequence_no": 11,
+            "type": "Process",
+            "description": "檢查測試參數設定及數據採集過程"
+          },
+          {
+            "event_id": 583,
+            "sequence_no": 12,
+            "type": "Process",
+            "description": "嘗試重新執行測試"
+          },
+          {
+            "event_id": 584,
+            "sequence_no": 13,
+            "type": "Process",
+            "description": "調整測試策略"
+          },
+          {
+            "event_id": 585,
+            "sequence_no": 14,
+            "type": "Response",
+            "description": "測試數據修正或策略調整完成"
+          },
+          {
+            "event_id": 586,
+            "sequence_no": 15,
+            "type": "Request",
+            "description": "無法連接至待測網站"
+          },
+          {
+            "event_id": 587,
+            "sequence_no": 16,
+            "type": "Process",
+            "description": "檢查網路連線及網站狀態"
+          },
+          {
+            "event_id": 588,
+            "sequence_no": 17,
+            "type": "Process",
+            "description": "等待網站恢復正常"
+          },
+          {
+            "event_id": 589,
+            "sequence_no": 18,
+            "type": "Response",
+            "description": "網站恢復正常或等待中"
+          },
+          {
+            "event_id": 590,
+            "sequence_no": 19,
+            "type": "Request",
+            "description": "測試結果超出預期範圍"
+          },
+          {
+            "event_id": 591,
+            "sequence_no": 20,
+            "type": "Process",
+            "description": "分析測試結果"
+          },
+          {
+            "event_id": 592,
+            "sequence_no": 21,
+            "type": "Process",
+            "description": "找出效能瓶頸"
+          },
+          {
+            "event_id": 593,
+            "sequence_no": 22,
+            "type": "Process",
+            "description": "提出改進建議"
+          },
+          {
+            "event_id": 594,
+            "sequence_no": 23,
+            "type": "Response",
+            "description": "提供效能瓶頸分析報告及改進建議"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "use_case_id": 9,
+    "use_case_name": "提交測試報告",
+    "event_summary": {
+      "正常程序": {
+        "事件列表": [
+          {
+            "event_id": 595,
+            "sequence_no": 1,
+            "type": "Request",
+            "description": "測試工程師登入系統"
+          },
+          {
+            "event_id": 596,
+            "sequence_no": 2,
+            "type": "Process",
+            "description": "系統驗證使用者帳號密碼"
+          },
+          {
+            "event_id": 597,
+            "sequence_no": 3,
+            "type": "Response",
+            "description": "系統顯示登入成功畫面或錯誤訊息"
+          },
+          {
+            "event_id": 598,
+            "sequence_no": 4,
+            "type": "Request",
+            "description": "測試工程師選擇\"提交測試報告\"功能"
+          },
+          {
+            "event_id": 599,
+            "sequence_no": 5,
+            "type": "Process",
+            "description": "系統載入提交測試報告介面"
+          },
+          {
+            "event_id": 600,
+            "sequence_no": 6,
+            "type": "Response",
+            "description": "系統顯示提交測試報告介面"
+          },
+          {
+            "event_id": 601,
+            "sequence_no": 7,
+            "type": "Request",
+            "description": "測試工程師選擇需要提交的測試項目"
+          },
+          {
+            "event_id": 602,
+            "sequence_no": 8,
+            "type": "Process",
+            "description": "系統查詢並取得所選測試項目的相關資訊"
+          },
+          {
+            "event_id": 603,
+            "sequence_no": 9,
+            "type": "Response",
+            "description": "系統顯示測試項目相關資訊，包含已完成的測試案例及測試結果"
+          },
+          {
+            "event_id": 604,
+            "sequence_no": 10,
+            "type": "Request",
+            "description": "測試工程師確認測試報告內容無誤"
+          },
+          {
+            "event_id": 605,
+            "sequence_no": 11,
+            "type": "Process",
+            "description": "系統等待使用者確認動作"
+          },
+          {
+            "event_id": 606,
+            "sequence_no": 12,
+            "type": "Response",
+            "description": "系統無動作，保持介面狀態"
+          },
+          {
+            "event_id": 607,
+            "sequence_no": 13,
+            "type": "Request",
+            "description": "測試工程師點擊\"提交\"按鈕"
+          },
+          {
+            "event_id": 608,
+            "sequence_no": 14,
+            "type": "Process",
+            "description": "系統驗證報告內容完整性及正確性"
+          },
+          {
+            "event_id": 609,
+            "sequence_no": 15,
+            "type": "Response",
+            "description": "系統顯示驗證結果（成功或失敗訊息及錯誤原因）"
+          },
+          {
+            "event_id": 610,
+            "sequence_no": 16,
+            "type": "Process",
+            "description": "系統儲存測試報告"
+          },
+          {
+            "event_id": 611,
+            "sequence_no": 17,
+            "type": "Response",
+            "description": "系統顯示提交成功訊息，並提供報告編號"
+          },
+          {
+            "event_id": 612,
+            "sequence_no": 18,
+            "type": "Process",
+            "description": "系統發送提交成功的郵件通知相關人員"
+          },
+          {
+            "event_id": 613,
+            "sequence_no": 19,
+            "type": "Response",
+            "description": "系統完成郵件發送"
+          }
+        ]
+      },
+      "例外程序": {
+        "事件列表": [
+          {
+            "event_id": 614,
+            "sequence_no": 1,
+            "type": "Request",
+            "description": "使用者輸入使用者名稱及密碼進行登入"
+          },
+          {
+            "event_id": 615,
+            "sequence_no": 2,
+            "type": "Process",
+            "description": "系統驗證使用者名稱及密碼"
+          },
+          {
+            "event_id": 616,
+            "sequence_no": 3,
+            "type": "Response",
+            "description": "系統顯示登入失敗訊息，提示重新輸入"
+          },
+          {
+            "event_id": 617,
+            "sequence_no": 4,
+            "type": "Request",
+            "description": "測試工程師提交測試報告"
+          },
+          {
+            "event_id": 618,
+            "sequence_no": 5,
+            "type": "Process",
+            "description": "系統檢查報告內容完整性"
+          },
+          {
+            "event_id": 619,
+            "sequence_no": 6,
+            "type": "Response",
+            "description": "系統提示缺少必要欄位"
+          },
+          {
+            "event_id": 620,
+            "sequence_no": 7,
+            "type": "Request",
+            "description": "測試工程師提交測試報告"
+          },
+          {
+            "event_id": 621,
+            "sequence_no": 8,
+            "type": "Process",
+            "description": "系統驗證報告內容格式"
+          },
+          {
+            "event_id": 622,
+            "sequence_no": 9,
+            "type": "Response",
+            "description": "系統顯示錯誤訊息並指引正確格式"
+          },
+          {
+            "event_id": 623,
+            "sequence_no": 10,
+            "type": "Request",
+            "description": "測試工程師提交測試報告"
+          },
+          {
+            "event_id": 624,
+            "sequence_no": 11,
+            "type": "Process",
+            "description": "系統處理報告提交，發生系統錯誤"
+          },
+          {
+            "event_id": 625,
+            "sequence_no": 12,
+            "type": "Response",
+            "description": "系統顯示錯誤訊息，記錄錯誤日誌，提示測試工程師稍後重新提交或聯繫系統管理員"
+          },
+          {
+            "event_id": 626,
+            "sequence_no": 13,
+            "type": "Request",
+            "description": "測試工程師提交測試報告"
+          },
+          {
+            "event_id": 627,
+            "sequence_no": 14,
+            "type": "Process",
+            "description": "系統偵測網路連線中斷"
+          },
+          {
+            "event_id": 628,
+            "sequence_no": 15,
+            "type": "Response",
+            "description": "系統顯示網路錯誤訊息，提示網路恢復後重新提交"
+          },
+          {
+            "event_id": 629,
+            "sequence_no": 16,
+            "type": "Request",
+            "description": "非測試工程師嘗試提交測試報告"
+          },
+          {
+            "event_id": 630,
+            "sequence_no": 17,
+            "type": "Process",
+            "description": "系統驗證使用者權限"
+          },
+          {
+            "event_id": 631,
+            "sequence_no": 18,
+            "type": "Response",
+            "description": "系統拒絕請求並提示權限不足"
+          }
+        ]
+      }
+    }
+  }
+]

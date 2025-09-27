@@ -1,0 +1,726 @@
+[
+  {
+    "使用案例名稱": "瀏覽菜單並搜尋餐廳",
+    "物件結構": [
+      {
+        "類型": "Boundary",
+        "名稱": "應用程式UI",
+        "屬性": [
+          "搜尋關鍵字: 字串",
+          "篩選條件: 字串",
+          "顯示內容: 字串"
+        ],
+        "方法": [
+          "顯示主畫面(): 無",
+          "顯示搜尋結果(結果: 餐廳列表): 無",
+          "顯示菜單(菜單: 菜單物件): 無",
+          "顯示錯誤訊息(訊息: 字串): 無"
+        ]
+      },
+      {
+        "類型": "Control",
+        "名稱": "搜尋控制器",
+        "屬性": [
+          "搜尋關鍵字: 字串",
+          "篩選條件: 字串"
+        ],
+        "方法": [
+          "處理導航請求(目標: 字串): 無"
+        ]
+      },
+      {
+        "類型": "Control",
+        "名稱": "餐廳資料庫介接器",
+        "屬性": [
+          "連線狀態: 布林值"
+        ],
+        "方法": [
+          "取得餐廳菜單(餐廳ID: 整數): 菜單物件"
+        ]
+      },
+      {
+        "類型": "Entity",
+        "名稱": "餐廳",
+        "屬性": [
+          "餐廳ID: 整數",
+          "餐廳名稱: 字串",
+          "地址: 字串"
+        ],
+        "方法": []
+      },
+      {
+        "類型": "Entity",
+        "名稱": "菜單",
+        "屬性": [
+          "菜單ID: 整數",
+          "菜名: 字串",
+          "價格: 浮點數",
+          "描述: 字串"
+        ],
+        "方法": []
+      },
+      {
+        "類型": "Control",
+        "名稱": "錯誤處理器",
+        "屬性": [
+          "錯誤訊息: 字串"
+        ],
+        "方法": [
+          "處理網路錯誤(): 無",
+          "處理資料庫錯誤(): 無",
+          "處理一般錯誤(): 無"
+        ]
+      }
+    ]
+  },
+  {
+    "使用案例名稱": "下單並付款",
+    "物件結構": [
+      {
+        "類型": "Boundary",
+        "名稱": "OrderUI",
+        "屬性": [
+          "cart: Cart",
+          "address: Address",
+          "paymentMethod: PaymentMethod",
+          "orderConfirmation: boolean"
+        ],
+        "方法": [
+          "displayMenu(): void",
+          "addToCart(item: MenuItem): void",
+          "updateCart(): void",
+          "showCart(): void",
+          "confirmOrder(): void",
+          "showAddressForm(): void",
+          "showPaymentOptions(): void",
+          "displayOrderConfirmation(order: Order): void",
+          "displayErrorMessage(message: string): void",
+          "displayNetworkError(): void",
+          "displaySystemError(): void"
+        ]
+      },
+      {
+        "類型": "Control",
+        "名稱": "OrderController",
+        "屬性": [
+          "cart: Cart",
+          "order: Order",
+          "paymentStatus: string"
+        ],
+        "方法": [
+          "validateCart(): boolean",
+          "verifyAddress(address: Address): boolean",
+          "verifyContactInfo(contactInfo: ContactInfo): boolean",
+          "handlePayment(paymentMethod: PaymentMethod): string",
+          "checkInventory(item: MenuItem): boolean",
+          "handleNetworkError(): void",
+          "handleSystemError(): void"
+        ]
+      },
+      {
+        "類型": "Entity",
+        "名稱": "Cart",
+        "屬性": [
+          "items: MenuItem[]",
+          "totalPrice: double"
+        ],
+        "方法": [
+          "addItem(item: MenuItem): void",
+          "removeItem(item: MenuItem): void",
+          "getTotalPrice(): double"
+        ]
+      },
+      {
+        "類型": "Entity",
+        "名稱": "Order",
+        "屬性": [
+          "orderId: int",
+          "orderDate: Date",
+          "customer: Customer",
+          "address: Address",
+          "items: MenuItem[]",
+          "totalPrice: double",
+          "paymentMethod: PaymentMethod",
+          "status: string"
+        ],
+        "方法": [
+          "getOrderDetails(): string"
+        ]
+      },
+      {
+        "類型": "Entity",
+        "名稱": "MenuItem",
+        "屬性": [
+          "itemId: int",
+          "itemName: string",
+          "price: double",
+          "quantityInStock: int"
+        ],
+        "方法": [
+          "getDetails(): string"
+        ]
+      },
+      {
+        "類型": "Entity",
+        "名稱": "Customer",
+        "屬性": [
+          "customerId: int",
+          "name: string",
+          "email: string",
+          "phone: string"
+        ],
+        "方法": [
+          "getContactInfo(): ContactInfo"
+        ]
+      },
+      {
+        "類型": "Entity",
+        "名稱": "Address",
+        "屬性": [
+          "addressId: int",
+          "street: string",
+          "city: string",
+          "state: string",
+          "zipCode: string"
+        ],
+        "方法": [
+          "isValid(): boolean"
+        ]
+      },
+      {
+        "類型": "Entity",
+        "名稱": "PaymentMethod",
+        "屬性": [
+          "paymentMethodId: int",
+          "type: string"
+        ],
+        "方法": [
+          "getDetails(): string"
+        ]
+      },
+      {
+        "類型": "Entity",
+        "名稱": "ContactInfo",
+        "屬性": [
+          "phone: string",
+          "email: string"
+        ],
+        "方法": [
+          "isValid(): boolean"
+        ]
+      }
+    ]
+  },
+  {
+    "使用案例名稱": "追蹤訂單狀態與聯絡外送員",
+    "物件結構": [
+      {
+        "類型": "Boundary",
+        "名稱": "LoginUI",
+        "屬性": [
+          "username: String",
+          "password: String"
+        ],
+        "方法": [
+          "getLoginCredentials(): Tuple[String",
+          "displayLoginSuccess(): Void",
+          "displayLoginError(message: String): Void"
+        ]
+      },
+      {
+        "類型": "Boundary",
+        "名稱": "OrderInfoUI",
+        "屬性": [
+          "orderID: String",
+          "orderStatus: String",
+          "deliveryManInfo: String"
+        ],
+        "方法": [
+          "getOrderID(): String",
+          "displayOrderInformation(order: Order): Void",
+          "displayErrorMessage(message: String): Void",
+          "displayDeliveryManInfo(deliveryMan: DeliveryMan): Void",
+          "initiateContact(deliveryMan: DeliveryMan): Void"
+        ]
+      },
+      {
+        "類型": "Boundary",
+        "名稱": "CommunicationUI",
+        "屬性": [
+          "connectionStatus: Boolean"
+        ],
+        "方法": [
+          "establishConnection(): Boolean",
+          "closeConnection(): Void",
+          "sendMessage(message: String): Boolean",
+          "receiveMessage(): String",
+          "displayCommunicationError(message: String): Void"
+        ]
+      },
+      {
+        "類型": "Control",
+        "名稱": "OrderController",
+        "屬性": [
+          "currentOrder: Order"
+        ],
+        "方法": [
+          "searchOrder(orderID: String): Order",
+          "getOrderStatus(order: Order): String",
+          "getDeliveryManInfo(order: Order): DeliveryMan",
+          "handleOrderError(message: String): Void",
+          "monitorOrderStatus(order: Order): Void"
+        ]
+      },
+      {
+        "類型": "Control",
+        "名稱": "CommunicationController",
+        "屬性": [
+          "connection: Connection"
+        ],
+        "方法": [
+          "initiateCommunication(order: Order): Boolean",
+          "handleCommunicationError(message: String): Void"
+        ]
+      },
+      {
+        "類型": "Entity",
+        "名稱": "Order",
+        "屬性": [
+          "orderID: String",
+          "customerID: String",
+          "orderStatus: String",
+          "deliveryManID: String"
+        ],
+        "方法": [
+          "updateStatus(newStatus: String): Void"
+        ]
+      },
+      {
+        "類型": "Entity",
+        "名稱": "Customer",
+        "屬性": [
+          "customerID: String",
+          "username: String",
+          "password: String"
+        ],
+        "方法": [
+          "authenticate(): Boolean"
+        ]
+      },
+      {
+        "類型": "Entity",
+        "名稱": "DeliveryMan",
+        "屬性": [
+          "deliveryManID: String",
+          "name: String",
+          "contactInfo: String"
+        ],
+        "方法": [
+          "getContactInfo(): String"
+        ]
+      },
+      {
+        "類型": "Entity",
+        "名稱": "System",
+        "屬性": [
+          "networkStatus: Boolean"
+        ],
+        "方法": [
+          "checkNetworkConnection(): Boolean"
+        ]
+      }
+    ]
+  },
+  {
+    "使用案例名稱": "管理菜單與餐點價格",
+    "物件結構": [
+      {
+        "類型": "Boundary",
+        "名稱": "LoginUI",
+        "屬性": [
+          "username: String",
+          "password: String"
+        ],
+        "方法": [
+          "getUsername(): String",
+          "getPassword(): String",
+          "displayErrorMessage(message: String): void",
+          "displayMenuManagementUI(): void"
+        ]
+      },
+      {
+        "類型": "Boundary",
+        "名稱": "MenuManagementUI",
+        "屬性": [
+          "selectedOperation: String"
+        ],
+        "方法": [
+          "displayAddMenuUI(): void",
+          "displayEditMenuUI(): void",
+          "displayDeleteMenuUI(): void",
+          "getSelectedOperation(): String",
+          "displayUpdatedMenu(menu: Menu): void",
+          "displaySuccessMessage(message: String): void",
+          "displayErrorMessage(message: String): void",
+          "getMenuItem(id: int): MenuItem",
+          "getMenu(): Menu"
+        ]
+      },
+      {
+        "類型": "Control",
+        "名稱": "AuthenticationController",
+        "屬性": [
+          ":"
+        ],
+        "方法": []
+      },
+      {
+        "類型": "Control",
+        "名稱": "MenuManagementController",
+        "屬性": [
+          ":"
+        ],
+        "方法": [
+          "addMenuItem(menuItem: MenuItem): Boolean",
+          "updateMenuItem(menuItem: MenuItem): Boolean",
+          "deleteMenuItem(menuItemID: int): Boolean",
+          "validateMenuItem(menuItem: MenuItem): Boolean",
+          "validateImage(image: byte[]): Boolean",
+          "validatePrice(price: double): Boolean"
+        ]
+      },
+      {
+        "類型": "Entity",
+        "名稱": "Menu",
+        "屬性": [
+          "menuID: int",
+          "menuItems: List<MenuItem>"
+        ],
+        "方法": [
+          "addMenuItem(menuItem: MenuItem): void",
+          "removeMenuItem(menuItem: MenuItem): void",
+          "getMenuItem(id: int): MenuItem"
+        ]
+      },
+      {
+        "類型": "Entity",
+        "名稱": "MenuItem",
+        "屬性": [
+          "menuItem: int",
+          "name: String",
+          "price: double",
+          "description: String",
+          "image: byte[]"
+        ],
+        "方法": [
+          "setName(name: String): void",
+          "setPrice(price: double): void",
+          "setDescription(description: String): void",
+          "setImage(image: byte[]): void"
+        ]
+      },
+      {
+        "類型": "Entity",
+        "名稱": "User",
+        "屬性": [
+          "userID: int",
+          "username: String",
+          "password: String"
+        ],
+        "方法": []
+      }
+    ]
+  },
+  {
+    "使用案例名稱": "接單與準備餐點",
+    "物件結構": [
+      {
+        "類型": "Boundary",
+        "名稱": "OrderNotification",
+        "屬性": [
+          "orderID: Integer",
+          "orderDetails: String"
+        ],
+        "方法": [
+          "receiveOrderNotification(): void"
+        ]
+      },
+      {
+        "類型": "Boundary",
+        "名稱": "OrderUI",
+        "屬性": [
+          "orderID: Integer",
+          "orderStatus: String"
+        ],
+        "方法": [
+          "displayOrderDetails(order: Order): void",
+          "displayOrderStatus(order: Order): void",
+          "displayContactInfo(customer: Customer): void",
+          "displayError(message: String): void",
+          "displayUpdatedOrder(order: Order): void",
+          "displayBackupSystemStatus(status: String): void",
+          "displayManualProcessingPrompt(): void",
+          "displayOrderProcessingResult(result: String): void"
+        ]
+      },
+      {
+        "類型": "Boundary",
+        "名稱": "OrderConfirmationUI",
+        "屬性": [
+          "confirmationMessage: String"
+        ],
+        "方法": [
+          "sendConfirmation(message: String): void"
+        ]
+      },
+      {
+        "類型": "Boundary",
+        "名稱": "KitchenSystemInterface",
+        "屬性": [],
+        "方法": [
+          "sendOrderToKitchen(order: Order): Boolean",
+          "receiveKitchenConfirmation(order: Order): Boolean"
+        ]
+      },
+      {
+        "類型": "Control",
+        "名稱": "OrderManager",
+        "屬性": [],
+        "方法": [
+          "validateOrder(order: Order): Boolean",
+          "processOrder(order: Order): void",
+          "handleOrderCancellation(order: Order): void",
+          "handleSystemFailure(): void"
+        ]
+      },
+      {
+        "類型": "Control",
+        "名稱": "Kitchen",
+        "屬性": [],
+        "方法": [
+          "prepareMeal(order: Order): Boolean",
+          "confirmMeal(order: Order): Boolean",
+          "remakeMeal(order: Order): Boolean"
+        ]
+      },
+      {
+        "類型": "Entity",
+        "名稱": "Order",
+        "屬性": [
+          "orderID: Integer",
+          "customerID: Integer",
+          "orderDetails: String",
+          "orderStatus: String",
+          "orderDate: Date",
+          "totalPrice: Double"
+        ],
+        "方法": [
+          "updateStatus(status: String): void"
+        ]
+      },
+      {
+        "類型": "Entity",
+        "名稱": "Customer",
+        "屬性": [
+          "customerID: Integer",
+          "contactInfo: String"
+        ],
+        "方法": []
+      },
+      {
+        "類型": "Entity",
+        "名稱": "MenuItem",
+        "屬性": [
+          "itemID: Integer",
+          "itemName: String",
+          "price: Double",
+          "stockQuantity: Integer"
+        ],
+        "方法": [
+          "updateStock(quantity: Integer): void"
+        ]
+      },
+      {
+        "類型": "Entity",
+        "名稱": "SystemLog",
+        "屬性": [
+          "logID: Integer",
+          "logTime: Date",
+          "logMessage: String"
+        ],
+        "方法": []
+      }
+    ]
+  },
+  {
+    "使用案例名稱": "查看訂單歷史與銷售報表",
+    "物件結構": [
+      {
+        "類型": "Boundary",
+        "名稱": "LoginUI",
+        "屬性": [
+          "username: String",
+          "password: String"
+        ],
+        "方法": []
+      },
+      {
+        "類型": "Boundary",
+        "名稱": "OrderHistoryUI",
+        "屬性": [
+          "startDate: Date",
+          "endDate: Date",
+          "reportType: String",
+          "orderData: List<Order>"
+        ],
+        "方法": [
+          "setStartDate(date: Date): Void",
+          "setEndDate(date: Date): Void",
+          "setReportType(type: String): Void",
+          "downloadOrders(): Boolean",
+          "showOrders(orders: List<Order>): Void"
+        ]
+      },
+      {
+        "類型": "Boundary",
+        "名稱": "SalesReportUI",
+        "屬性": [
+          "reportType: String",
+          "reportData: ReportData"
+        ],
+        "方法": [
+          "setReportType(type: String): Void",
+          "downloadReport(): Boolean",
+          "showReport(report: ReportData): Void"
+        ]
+      },
+      {
+        "類型": "Boundary",
+        "名稱": "LogoutUI",
+        "屬性": [
+          ":"
+        ],
+        "方法": [
+          "handleLogout(): Boolean"
+        ]
+      },
+      {
+        "類型": "Control",
+        "名稱": "AuthenticationController",
+        "屬性": [
+          ":"
+        ],
+        "方法": [
+          "checkPermission(user: User): Boolean"
+        ]
+      },
+      {
+        "類型": "Control",
+        "名稱": "OrderHistoryController",
+        "屬性": [
+          ":"
+        ],
+        "方法": [
+          "generateCSV(orders: List<Order>): String",
+          "generatePDF(orders: List<Order>): String"
+        ]
+      },
+      {
+        "類型": "Control",
+        "名稱": "SalesReportController",
+        "屬性": [
+          ":"
+        ],
+        "方法": [
+          "generateCSVReport(report: ReportData): String",
+          "generatePDFReport(report: ReportData): String"
+        ]
+      },
+      {
+        "類型": "Entity",
+        "名稱": "Order",
+        "屬性": [
+          "orderId: Integer",
+          "orderDate: Date",
+          "orderDetails: List<OrderDetail>",
+          "totalAmount: Double"
+        ],
+        "方法": []
+      },
+      {
+        "類型": "Entity",
+        "名稱": "OrderDetail",
+        "屬性": [
+          "itemId: Integer",
+          "itemName: String",
+          "quantity: Integer",
+          "price: Double"
+        ],
+        "方法": []
+      },
+      {
+        "類型": "Entity",
+        "名稱": "ReportData",
+        "屬性": [
+          "reportType: String",
+          "data: List<ReportItem>",
+          "chartData: ChartData"
+        ],
+        "方法": []
+      },
+      {
+        "類型": "Entity",
+        "名稱": "ReportItem",
+        "屬性": [
+          "item: String",
+          "value: Double"
+        ],
+        "方法": []
+      },
+      {
+        "類型": "Entity",
+        "名稱": "ChartData",
+        "屬性": [
+          "labels: List<String>",
+          "datasets: List<Dataset>"
+        ],
+        "方法": []
+      },
+      {
+        "類型": "Entity",
+        "名稱": "Dataset",
+        "屬性": [
+          "label: String",
+          "data: List<Double>"
+        ],
+        "方法": []
+      },
+      {
+        "類型": "Entity",
+        "名稱": "User",
+        "屬性": [
+          "userId: Integer",
+          "username: String",
+          "password: String",
+          "role: String"
+        ],
+        "方法": []
+      },
+      {
+        "類型": "Control",
+        "名稱": "ErrorHandler",
+        "屬性": [
+          ":"
+        ],
+        "方法": [
+          "handleDatabaseError(): Void",
+          "handleFileDownloadError(): Void",
+          "handleUnexpectedError(): Void",
+          "handleNetworkError(): Void",
+          "handleAuthenticationError(): Void",
+          "handleAuthorizationError(): Void"
+        ]
+      }
+    ]
+  }
+]

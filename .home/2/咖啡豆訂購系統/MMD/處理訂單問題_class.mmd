@@ -1,0 +1,17 @@
+classDiagram
+LoginUI --> AuthenticationController
+OrderManagementUI --> OrderQueryController
+OrderManagementUI --> OrderUpdateController
+OrderManagementUI --> OrderProcessingController
+OrderManagementUI --> ErrorHandlingController
+OrderManagementUI --> Order
+OrderManagementUI --> Customer
+OrderManagementUI --> OrderStatusNotification
+LogoutUI --> SessionManagementController
+AuthenticationController --> SessionManagementController
+OrderQueryController --> Order
+OrderUpdateController --> Order
+OrderProcessingController --> Order
+OrderProcessingController --> OrderLog
+OrderStatusNotification --> Customer
+ErrorHandlingController --> OrderLog

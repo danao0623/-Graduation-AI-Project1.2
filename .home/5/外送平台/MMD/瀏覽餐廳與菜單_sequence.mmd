@@ -1,0 +1,80 @@
+sequenceDiagram
+    actor User
+    participant AppUI
+    participant LocationService
+    participant NetworkService
+    participant RestaurantSearchController
+    participant RestaurantDataController
+
+    User->>AppUI: App launched
+    AppUI->>LocationService: requestLocationAuthorization()
+    LocationService-->>AppUI: locationAuthorizationStatus
+    alt Location authorized
+        AppUI->>LocationService: getLocation()
+        LocationService-->>AppUI: latitude, longitude
+        AppUI->>NetworkService: checkNetworkConnection()
+        NetworkService-->>AppUI: connectionStatus
+        alt Network connected
+            AppUI->>RestaurantSearchController: getRestaurants(latitude, longitude)
+            RestaurantSearchController->>RestaurantSearchController: filterRestaurants(filterCriteria)
+            RestaurantSearchController->>RestaurantDataController: getRestaurantData()
+            RestaurantDataController-->>RestaurantSearchController: restaurants
+            RestaurantSearchController-->>AppUI: restaurants
+            AppUI->>AppUI: displayRestaurantList(restaurants)
+            User->>AppUI: selectRestaurant(restaurantId)
+            AppUI->>RestaurantSearchController: getRestaurantMenu(restaurantId)
+            RestaurantSearchController->>RestaurantDataController: getMenuData(restaurantId)
+            RestaurantDataController-->>RestaurantSearchController: menu
+            RestaurantSearchController-->>AppUI: menu
+            AppUI->>AppUI: displayRestaurantMenu(menu)
+            loop User browses restaurants/menu
+                User->>AppUI: selectRestaurant/Dish
+                AppUI->>RestaurantSearchController: getRestaurant/DishData
+                RestaurantSearchController->>RestaurantDataController: getRestaurant/DishData
+                RestaurantDataController-->>RestaurantSearchController: restaurant/dish
+                RestaurantSearchController-->>AppUI: restaurant/dish
+                AppUI->>AppUI: displayRestaurant/DishData
+            end
+            User->>AppUI: saveFavoriteRestaurant(restaurant) / saveFavoriteDish(dish)
+            AppUI->>RestaurantDataController: saveFavoriteRestaurant(restaurant) / saveFavoriteDish(dish)
+            RestaurantDataController-->>AppUI: success
+            AppUI->>AppUI: showSaveSuccessMessage()
+        else Network error
+            AppUI->>AppUI: displayErrorMessage("Network error")
+        end
+    else Location unauthorized
+        AppUI->>AppUI: displayLocationAuthorizationRequest()
+    end
+
+    alt Server error
+        AppUI->>RestaurantSearchController: getRestaurants(latitude, longitude)
+        RestaurantSearchController->>RestaurantDataController: getRestaurantData()
+        RestaurantDataController-->>RestaurantSearchController: error
+        RestaurantSearchController-->>AppUI: error
+        AppUI->>AppUI: displayErrorMessage("Server error")
+    end
+
+    alt Restaurant not found
+        User->>AppUI: selectRestaurant(restaurantId)
+        AppUI->>RestaurantSearchController: getRestaurantMenu(restaurantId)
+        RestaurantSearchController->>RestaurantDataController: getMenuData(restaurantId)
+        RestaurantDataController-->>RestaurantSearchController: restaurantNotFound
+        RestaurantSearchController-->>AppUI: restaurantNotFound
+        AppUI->>AppUI: displayErrorMessage("Restaurant not found")
+    end
+
+    alt Menu not found
+        User->>AppUI: selectRestaurant(restaurantId)
+        AppUI->>RestaurantSearchController: getRestaurantMenu(restaurantId)
+        RestaurantSearchController->>RestaurantDataController: getMenuData(restaurantId)
+        RestaurantDataController-->>RestaurantSearchController: menuNotFound
+        RestaurantSearchController-->>AppUI: menuNotFound
+        AppUI->>AppUI: displayErrorMessage("Menu not found")
+    end
+
+    alt Invalid filter criteria
+        User->>AppUI: applyFilter(filterCriteria)
+        AppUI->>RestaurantSearchController: filterRestaurants(filterCriteria)
+        RestaurantSearchController-->>AppUI: invalidFilterCriteria
+        AppUI->>AppUI: displayErrorMessage("Invalid filter criteria")
+    end

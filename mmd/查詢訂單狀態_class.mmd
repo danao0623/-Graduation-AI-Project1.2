@@ -1,0 +1,60 @@
+```mermaid
+classDiagram
+class LoginUI <<Boundary>> {
+-username: String
+-password: String
++getLoginInfo(): String
+}
+class OrderQueryUI <<Boundary>> {
+-orderID: String
+-customerID: String
+-orderStatus: String
++getOrderID(): String
++getCustomerID(): String
++displayOrderStatus(orderStatus: String): void
+}
+class AuthenticationController <<Control>> {
+-loggedInUser: User
++displayLoginSuccess(): void
++displayLoginFailure(): void
+}
+class OrderQueryController <<Control>> {
+-order: Order
++displayValidationResult(success: Boolean): void
++displayOrderStatus(orderStatus: String): void
++handleDatabaseError(): void
++handleAuthorizationError(): void
++validateOrderIDFormat(orderID: String): Boolean
+}
+class Order <<Entity>> {
+-orderID: String
+-customerID: String
+-orderStatus: String
++getOrderStatus(): String
+}
+class User <<Entity>> {
+-username: String
+-role: String
++getRole(): String
+}
+class Database <<Entity>> {
+-orders: List<Order>
++getOrder(orderID: String): Order
++getOrder(customerID: String): Order
+}
+class ErrorLog <<Entity>> {
+-timestamp: Date
+-message: String
++logError(message: String): void
+}
+
+LoginUI --> AuthenticationController
+AuthenticationController --> User
+OrderQueryUI --> OrderQueryController
+OrderQueryController --> Order
+OrderQueryController --> Database
+OrderQueryController --> ErrorLog
+OrderQueryController --> User
+Database --> Order
+
+```

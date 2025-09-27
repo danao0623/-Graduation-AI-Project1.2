@@ -1,0 +1,54 @@
+```mermaid
+sequenceDiagram
+    actor User
+    participant LoginUI
+    participant ReportSubmissionController
+    participant SubmitReportUI
+    participant EmailNotification
+
+    User->>LoginUI: login(username, password)
+    LoginUI->>ReportSubmissionController: authenticate(username, password)
+    alt Authentication successful
+        ReportSubmissionController-->>LoginUI: authenticationSuccess()
+        LoginUI->>User: displayLoginSuccess()
+    else Authentication failed
+        ReportSubmissionController-->>LoginUI: authenticationFailure(message)
+        LoginUI->>User: displayLoginFailure(message)
+    end
+
+    User->>SubmitReportUI: select "Submit Test Report"
+    SubmitReportUI->>ReportSubmissionController: loadReportInterface()
+    ReportSubmissionController-->>SubmitReportUI: loadReportInterface()
+
+    User->>SubmitReportUI: selectTestItems(selectedTestItems)
+    SubmitReportUI->>ReportSubmissionController: retrieveTestItemInfo(selectedTestItems)
+    ReportSubmissionController->>TestItem: getCompletedTestCases()
+    TestItem-->>ReportSubmissionController: completedTestCases
+    ReportSubmissionController-->>SubmitReportUI: displayReportInfo(testItemInfo)
+
+    User->>SubmitReportUI: confirmReportContent()
+    SubmitReportUI->>ReportSubmissionController: verifyReportContent()
+    alt Report content is valid
+        ReportSubmissionController->>TestReport: createReport(submitterId, submissionTime, reportContent, testItems)
+        ReportSubmissionController->>ReportSubmissionController: saveReport(report)
+        ReportSubmissionController-->>SubmitReportUI: submissionSuccess(reportNumber)
+        SubmitReportUI->>User: displaySubmissionSuccess(reportNumber)
+        ReportSubmissionController->>EmailNotification: sendEmail(recipients, subject, body)
+        EmailNotification->>ReportSubmissionController: sendEmail()
+        ReportSubmissionController-->>SubmitReportUI: emailSent()
+    else Report content is invalid
+        alt Missing fields
+            ReportSubmissionController-->>SubmitReportUI: displayMissingFieldsError()
+        else Format error
+            ReportSubmissionController-->>SubmitReportUI: displayFormatError(errorMessage)
+        else System error
+            ReportSubmissionController->>ReportSubmissionController: handleSystemError()
+            ReportSubmissionController-->>SubmitReportUI: displaySystemError()
+        else Network error
+            ReportSubmissionController-->>SubmitReportUI: displayNetworkError()
+        else Permission error
+            ReportSubmissionController-->>SubmitReportUI: displayPermissionError()
+        end
+    end
+
+```

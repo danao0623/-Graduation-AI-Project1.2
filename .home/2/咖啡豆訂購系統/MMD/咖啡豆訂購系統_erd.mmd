@@ -1,0 +1,53 @@
+erDiagram
+    Customer {
+        string customerID PK
+        string customerName
+        string customerEmail
+        string customerAddress
+    }
+    Inquiry {
+        string inquiryID PK
+        string content
+        string replyID FK
+    }
+    Reply {
+        string replyID PK
+        string content
+        string channel
+        string replyTime
+        string staffID FK
+        string status
+    }
+    Staff {
+        string staffID PK
+        string username
+        string password
+    }
+    SystemLog {
+        string logID PK
+        string logTime
+        string message
+    }
+    Order {
+        string orderID PK
+        string customerID FK
+        string orderStatus
+    }
+    OrderLog {
+        int logID PK
+        string orderID FK
+        string operationType
+        string operator
+        string timestamp
+        string details
+    }
+    User {
+        string userID PK
+        string username
+        string role
+    }
+    Customer ||--o{ Order : places
+    Order ||--o{ OrderLog : has
+    Inquiry ||--o{ Reply : has
+    Reply ||--o{ Staff : replied_by
+    SystemLog ||--o{ User : logged_by

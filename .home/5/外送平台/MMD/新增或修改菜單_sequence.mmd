@@ -1,0 +1,81 @@
+sequenceDiagram
+    actor User
+    participant LoginScreen
+    participant AuthenticationController
+    participant MenuManagementScreen
+    participant MenuManagementController
+    participant AddEditMenuForm
+    participant MenuItem
+
+    User->>LoginScreen: login(username, password)
+    LoginScreen->>AuthenticationController: authenticate(username, password)
+    AuthenticationController->>AuthenticationController: checkUserPermission()
+    alt Authentication successful
+        AuthenticationController-->>LoginScreen: success
+        LoginScreen->>User: displayLoginSuccess()
+        User->>MenuManagementScreen: navigate to MenuManagementScreen
+        MenuManagementScreen->>MenuManagementController: loadMenuList()
+        MenuManagementController->>MenuManagementController: loadMenuList()
+        MenuManagementController-->>MenuManagementScreen: menuList
+        MenuManagementScreen->>User: displayMenuList(menuList)
+        
+        alt Add new menu
+            User->>MenuManagementScreen: click Add Menu
+            MenuManagementScreen->>MenuManagementScreen: showAddMenuForm()
+            MenuManagementScreen->>User: displayAddMenuForm()
+            User->>AddEditMenuForm: input menu data
+            AddEditMenuForm->>MenuManagementController: addMenuItem(menuItem)
+            MenuManagementController->>MenuManagementController: validateMenuItem(menuItem)
+            alt Validation successful
+                MenuManagementController->>MenuManagementController: addMenuItem(menuItem)
+                MenuManagementController-->>AddEditMenuForm: success
+                AddEditMenuForm->>MenuManagementScreen: displaySaveSuccess()
+                MenuManagementScreen->>User: displaySaveSuccess()
+                MenuManagementScreen->>MenuManagementController: loadMenuList()
+                MenuManagementController-->>MenuManagementScreen: menuList
+                MenuManagementScreen->>User: displayMenuList(menuList)
+            else Validation failed
+                MenuManagementController-->>AddEditMenuForm: error message
+                AddEditMenuForm->>User: displayError(message)
+            end
+        else Edit existing menu
+            User->>MenuManagementScreen: select menu item
+            MenuManagementScreen->>MenuManagementScreen: showEditMenuForm(menuItem)
+            MenuManagementScreen->>User: displayEditMenuForm(menuItem)
+            User->>AddEditMenuForm: modify menu data
+            AddEditMenuForm->>MenuManagementController: updateMenuItem(menuItem)
+            MenuManagementController->>MenuManagementController: validateMenuItem(menuItem)
+            alt Validation successful
+                MenuManagementController->>MenuManagementController: updateMenuItem(menuItem)
+                MenuManagementController-->>AddEditMenuForm: success
+                AddEditMenuForm->>MenuManagementScreen: displaySaveSuccess()
+                MenuManagementScreen->>User: displaySaveSuccess()
+                MenuManagementScreen->>MenuManagementController: loadMenuList()
+                MenuManagementController-->>MenuManagementScreen: menuList
+                MenuManagementScreen->>User: displayMenuList(menuList)
+            else Validation failed
+                MenuManagementController-->>AddEditMenuForm: error message
+                AddEditMenuForm->>User: displayError(message)
+            end
+        end
+    else Authentication failed
+        AuthenticationController-->>LoginScreen: failure
+        LoginScreen->>User: displayLoginFailure()
+    end
+
+    alt Server Error
+        User->>MenuManagementController: add/update menu item
+        MenuManagementController->>MenuManagementController:  handle server error
+        MenuManagementController-->>MenuManagementScreen: server error
+        MenuManagementScreen->>User: displayError(message)
+    else Network Error
+        User->>MenuManagementController: add/update menu item
+        MenuManagementController->>MenuManagementController: handle network error
+        MenuManagementController-->>MenuManagementScreen: network error
+        MenuManagementScreen->>User: displayError(message)
+    else Permission Error
+        User->>MenuManagementController: add/update menu item
+        MenuManagementController->>MenuManagementController: checkUserPermission()
+        MenuManagementController-->>MenuManagementScreen: permission error
+        MenuManagementScreen->>User: displayError(message)
+    end

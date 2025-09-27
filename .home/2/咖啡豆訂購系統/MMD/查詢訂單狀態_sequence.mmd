@@ -1,0 +1,51 @@
+sequenceDiagram
+    actor CustomerService
+    participant LoginUI
+    participant AuthenticationController
+    participant OrderQueryUI
+    participant OrderQueryController
+    participant Database
+    participant Order
+
+    CustomerService->>LoginUI: getLoginInfo()
+    LoginUI->>AuthenticationController: authenticate(username, password)
+    alt Authentication successful
+        AuthenticationController->>AuthenticationController: displayLoginSuccess()
+    else Authentication failed
+        AuthenticationController->>AuthenticationController: displayLoginFailure()
+    end
+
+    CustomerService->>OrderQueryUI: getOrderID() or getCustomerID()
+    OrderQueryUI->>OrderQueryController: validateInput(orderID, customerID)
+    alt Input validation successful
+        OrderQueryController->>OrderQueryController: displayValidationResult(true)
+        OrderQueryController->>Database: getOrder(orderID) or getOrder(customerID)
+        alt Order found
+            Database-->>OrderQueryController: Order object
+            OrderQueryController->>Order: getOrderStatus()
+            Order-->>OrderQueryController: orderStatus
+            OrderQueryController->>OrderQueryUI: displayOrderStatus(orderStatus)
+            OrderQueryController->>OrderQueryController: logOrderAccess(orderID, customerID)
+        else Order not found
+            OrderQueryController->>OrderQueryController: displayErrorMessage("查無此訂單")
+        end
+    else Input validation failed
+        OrderQueryController->>OrderQueryController: displayValidationResult(false)
+        OrderQueryController->>OrderQueryController: displayErrorMessage("請輸入正確的訂單編號格式")
+    end
+
+    alt Database connection failed
+        OrderQueryController->>OrderQueryController: logError("Database connection failed")
+        OrderQueryController->>OrderQueryUI: displayErrorMessage("系統錯誤，請稍後再試")
+    end
+
+    alt Permission check failed
+        OrderQueryController->>AuthenticationController: checkPermission()
+        AuthenticationController->>OrderQueryController: permissionDenied
+        OrderQueryController->>OrderQueryUI: displayErrorMessage("您無權限執行此操作")
+    end
+
+    alt Order status retrieval failed
+        OrderQueryController->>OrderQueryController: logError("Failed to retrieve order status")
+        OrderQueryController->>OrderQueryUI: displayErrorMessage("無法取得訂單狀態資訊，請聯繫系統管理員")
+    end

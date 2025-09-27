@@ -1,0 +1,1376 @@
+[
+  {
+    "use_case_id": 10,
+    "use_case_name": "瀏覽菜單並搜尋餐廳",
+    "event_summary": {
+      "正常程序": {
+        "事件列表": [
+          {
+            "event_id": 632,
+            "sequence_no": 1,
+            "type": "Request",
+            "description": "使用者開啟應用程式"
+          },
+          {
+            "event_id": 633,
+            "sequence_no": 2,
+            "type": "Process",
+            "description": "載入應用程式主畫面"
+          },
+          {
+            "event_id": 634,
+            "sequence_no": 3,
+            "type": "Response",
+            "description": "顯示應用程式主畫面"
+          },
+          {
+            "event_id": 635,
+            "sequence_no": 4,
+            "type": "Request",
+            "description": "使用者輸入搜尋關鍵字或篩選條件"
+          },
+          {
+            "event_id": 636,
+            "sequence_no": 5,
+            "type": "Process",
+            "description": "根據關鍵字或篩選條件搜尋餐廳"
+          },
+          {
+            "event_id": 637,
+            "sequence_no": 6,
+            "type": "Response",
+            "description": "顯示搜尋結果列表"
+          },
+          {
+            "event_id": 638,
+            "sequence_no": 7,
+            "type": "Request",
+            "description": "使用者點擊餐廳查看菜單"
+          },
+          {
+            "event_id": 639,
+            "sequence_no": 8,
+            "type": "Process",
+            "description": "取得所選餐廳的菜單資訊"
+          },
+          {
+            "event_id": 640,
+            "sequence_no": 9,
+            "type": "Response",
+            "description": "顯示所選餐廳的菜單"
+          },
+          {
+            "event_id": 641,
+            "sequence_no": 10,
+            "type": "Request",
+            "description": "使用者瀏覽菜單"
+          },
+          {
+            "event_id": 642,
+            "sequence_no": 11,
+            "type": "Process",
+            "description": "處理菜單瀏覽請求"
+          },
+          {
+            "event_id": 643,
+            "sequence_no": 12,
+            "type": "Response",
+            "description": "顯示菜單內容"
+          },
+          {
+            "event_id": 644,
+            "sequence_no": 13,
+            "type": "Request",
+            "description": "使用者選擇返回搜尋結果或瀏覽其他餐廳"
+          },
+          {
+            "event_id": 645,
+            "sequence_no": 14,
+            "type": "Process",
+            "description": "處理使用者導航請求"
+          },
+          {
+            "event_id": 646,
+            "sequence_no": 15,
+            "type": "Response",
+            "description": "顯示對應畫面：搜尋結果頁面或其他餐廳頁面"
+          }
+        ]
+      },
+      "例外程序": {
+        "事件列表": [
+          {
+            "event_id": 647,
+            "sequence_no": 1,
+            "type": "Request",
+            "description": "使用者瀏覽菜單"
+          },
+          {
+            "event_id": 648,
+            "sequence_no": 2,
+            "type": "Process",
+            "description": "系統嘗試連線至伺服器"
+          },
+          {
+            "event_id": 649,
+            "sequence_no": 3,
+            "type": "Response",
+            "description": "網路連線錯誤訊息"
+          },
+          {
+            "event_id": 650,
+            "sequence_no": 4,
+            "type": "Request",
+            "description": "使用者輸入搜尋條件"
+          },
+          {
+            "event_id": 651,
+            "sequence_no": 5,
+            "type": "Process",
+            "description": "系統搜尋餐廳資料庫"
+          },
+          {
+            "event_id": 652,
+            "sequence_no": 6,
+            "type": "Response",
+            "description": "顯示「沒有符合條件的餐廳」訊息及修改搜尋條件建議"
+          },
+          {
+            "event_id": 653,
+            "sequence_no": 7,
+            "type": "Request",
+            "description": "使用者瀏覽菜單"
+          },
+          {
+            "event_id": 654,
+            "sequence_no": 8,
+            "type": "Process",
+            "description": "系統嘗試存取餐廳資料庫"
+          },
+          {
+            "event_id": 655,
+            "sequence_no": 9,
+            "type": "Response",
+            "description": "顯示餐廳資料庫錯誤訊息及重新載入或聯繫客服選項"
+          },
+          {
+            "event_id": 656,
+            "sequence_no": 10,
+            "type": "Request",
+            "description": "使用者選擇特定餐廳菜單"
+          },
+          {
+            "event_id": 657,
+            "sequence_no": 11,
+            "type": "Process",
+            "description": "系統嘗試載入特定餐廳菜單"
+          },
+          {
+            "event_id": 658,
+            "sequence_no": 12,
+            "type": "Response",
+            "description": "顯示特定餐廳菜單無法載入訊息及重新嘗試或回報問題選項"
+          },
+          {
+            "event_id": 659,
+            "sequence_no": 13,
+            "type": "Request",
+            "description": "使用者瀏覽菜單或進行任何操作"
+          },
+          {
+            "event_id": 660,
+            "sequence_no": 14,
+            "type": "Process",
+            "description": "系統發生未預期錯誤"
+          },
+          {
+            "event_id": 661,
+            "sequence_no": 15,
+            "type": "Response",
+            "description": "顯示一般性錯誤訊息及建議使用者稍後再試或聯繫客服"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "use_case_id": 11,
+    "use_case_name": "下單並付款",
+    "event_summary": {
+      "正常程序": {
+        "事件列表": [
+          {
+            "event_id": 662,
+            "sequence_no": 1,
+            "type": "Request",
+            "description": "顧客瀏覽菜單並選擇餐點添加到購物車"
+          },
+          {
+            "event_id": 663,
+            "sequence_no": 2,
+            "type": "Process",
+            "description": "系統更新購物車內容"
+          },
+          {
+            "event_id": 664,
+            "sequence_no": 3,
+            "type": "Response",
+            "description": "系統顯示更新後的購物車內容"
+          },
+          {
+            "event_id": 665,
+            "sequence_no": 4,
+            "type": "Request",
+            "description": "顧客檢視購物車內容並確認餐點及數量"
+          },
+          {
+            "event_id": 666,
+            "sequence_no": 5,
+            "type": "Process",
+            "description": "系統驗證購物車內容"
+          },
+          {
+            "event_id": 667,
+            "sequence_no": 6,
+            "type": "Response",
+            "description": "系統顯示購物車內容確認畫面"
+          },
+          {
+            "event_id": 668,
+            "sequence_no": 7,
+            "type": "Request",
+            "description": "顧客填寫送餐地址及聯絡電話"
+          },
+          {
+            "event_id": 669,
+            "sequence_no": 8,
+            "type": "Process",
+            "description": "系統驗證地址及電話資訊"
+          },
+          {
+            "event_id": 670,
+            "sequence_no": 9,
+            "type": "Response",
+            "description": "系統顯示地址及電話資訊確認畫面或錯誤訊息"
+          },
+          {
+            "event_id": 671,
+            "sequence_no": 10,
+            "type": "Request",
+            "description": "顧客選擇線上支付方式"
+          },
+          {
+            "event_id": 672,
+            "sequence_no": 11,
+            "type": "Process",
+            "description": "系統根據選擇的支付方式導引至支付平台"
+          },
+          {
+            "event_id": 673,
+            "sequence_no": 12,
+            "type": "Response",
+            "description": "系統跳轉至支付平台"
+          },
+          {
+            "event_id": 674,
+            "sequence_no": 13,
+            "type": "Request",
+            "description": "顧客在支付平台完成付款"
+          },
+          {
+            "event_id": 675,
+            "sequence_no": 14,
+            "type": "Process",
+            "description": "系統接收支付平台的付款結果"
+          },
+          {
+            "event_id": 676,
+            "sequence_no": 15,
+            "type": "Response",
+            "description": "系統顯示付款成功訊息及訂單編號及訂單明細"
+          },
+          {
+            "event_id": 677,
+            "sequence_no": 16,
+            "type": "Process",
+            "description": "系統發送訂單確認郵件至顧客電子郵件地址"
+          },
+          {
+            "event_id": 678,
+            "sequence_no": 17,
+            "type": "Response",
+            "description": "系統記錄郵件發送結果"
+          },
+          {
+            "event_id": 679,
+            "sequence_no": 18,
+            "type": "Process",
+            "description": "系統將訂單資訊傳送至廚房及送餐部門"
+          },
+          {
+            "event_id": 680,
+            "sequence_no": 19,
+            "type": "Response",
+            "description": "系統記錄訂單資訊傳送結果"
+          }
+        ]
+      },
+      "例外程序": {
+        "事件列表": [
+          {
+            "event_id": 681,
+            "sequence_no": 1,
+            "type": "Request",
+            "description": "顧客選擇缺貨餐點"
+          },
+          {
+            "event_id": 682,
+            "sequence_no": 2,
+            "type": "Process",
+            "description": "系統判斷餐點庫存"
+          },
+          {
+            "event_id": 683,
+            "sequence_no": 3,
+            "type": "Response",
+            "description": "系統顯示缺貨訊息，提供替換或移除選項"
+          },
+          {
+            "event_id": 684,
+            "sequence_no": 4,
+            "type": "Request",
+            "description": "顧客選擇支付方式並提交付款"
+          },
+          {
+            "event_id": 685,
+            "sequence_no": 5,
+            "type": "Process",
+            "description": "系統進行支付處理"
+          },
+          {
+            "event_id": 686,
+            "sequence_no": 6,
+            "type": "Response",
+            "description": "系統顯示支付成功或失敗訊息，失敗訊息包含錯誤代碼及建議方案"
+          },
+          {
+            "event_id": 687,
+            "sequence_no": 7,
+            "type": "Request",
+            "description": "顧客嘗試下單"
+          },
+          {
+            "event_id": 688,
+            "sequence_no": 8,
+            "type": "Process",
+            "description": "系統偵測網路連線狀態"
+          },
+          {
+            "event_id": 689,
+            "sequence_no": 9,
+            "type": "Response",
+            "description": "系統顯示網路錯誤訊息，建議檢查網路連線後重新嘗試"
+          },
+          {
+            "event_id": 690,
+            "sequence_no": 10,
+            "type": "Request",
+            "description": "顧客提交訂單"
+          },
+          {
+            "event_id": 691,
+            "sequence_no": 11,
+            "type": "Process",
+            "description": "系統驗證送餐地址完整性"
+          },
+          {
+            "event_id": 692,
+            "sequence_no": 12,
+            "type": "Response",
+            "description": "系統提示顧客填寫完整送餐地址或顯示地址錯誤訊息"
+          },
+          {
+            "event_id": 693,
+            "sequence_no": 13,
+            "type": "Request",
+            "description": "顧客提交訂單"
+          },
+          {
+            "event_id": 694,
+            "sequence_no": 14,
+            "type": "Process",
+            "description": "系統驗證聯絡資訊正確性"
+          },
+          {
+            "event_id": 695,
+            "sequence_no": 15,
+            "type": "Response",
+            "description": "系統提示顧客確認聯絡資訊正確性"
+          },
+          {
+            "event_id": 696,
+            "sequence_no": 16,
+            "type": "Request",
+            "description": "顧客進行任何操作"
+          },
+          {
+            "event_id": 697,
+            "sequence_no": 17,
+            "type": "Process",
+            "description": "系統發生錯誤"
+          },
+          {
+            "event_id": 698,
+            "sequence_no": 18,
+            "type": "Response",
+            "description": "系統顯示系統錯誤訊息，提供聯繫客服途徑"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "use_case_id": 12,
+    "use_case_name": "追蹤訂單狀態與聯絡外送員",
+    "event_summary": {
+      "正常程序": {
+        "事件列表": [
+          {
+            "event_id": 699,
+            "sequence_no": 1,
+            "type": "Request",
+            "description": "顧客登入系統"
+          },
+          {
+            "event_id": 700,
+            "sequence_no": 2,
+            "type": "Process",
+            "description": "系統驗證顧客身份"
+          },
+          {
+            "event_id": 701,
+            "sequence_no": 3,
+            "type": "Response",
+            "description": "系統顯示登入成功訊息或錯誤訊息"
+          },
+          {
+            "event_id": 702,
+            "sequence_no": 4,
+            "type": "Request",
+            "description": "顧客輸入訂單編號或其他識別方式"
+          },
+          {
+            "event_id": 703,
+            "sequence_no": 5,
+            "type": "Process",
+            "description": "系統搜尋對應訂單資訊"
+          },
+          {
+            "event_id": 704,
+            "sequence_no": 6,
+            "type": "Response",
+            "description": "系統顯示訂單資訊或錯誤訊息"
+          },
+          {
+            "event_id": 705,
+            "sequence_no": 7,
+            "type": "Process",
+            "description": "系統查詢訂單即時狀態"
+          },
+          {
+            "event_id": 706,
+            "sequence_no": 8,
+            "type": "Response",
+            "description": "系統顯示訂單即時狀態"
+          },
+          {
+            "event_id": 707,
+            "sequence_no": 9,
+            "type": "Process",
+            "description": "系統查詢外送員相關資訊"
+          },
+          {
+            "event_id": 708,
+            "sequence_no": 10,
+            "type": "Response",
+            "description": "系統顯示外送員相關資訊"
+          },
+          {
+            "event_id": 709,
+            "sequence_no": 11,
+            "type": "Request",
+            "description": "顧客選擇與外送員聯繫"
+          },
+          {
+            "event_id": 710,
+            "sequence_no": 12,
+            "type": "Process",
+            "description": "系統建立通訊連線"
+          },
+          {
+            "event_id": 711,
+            "sequence_no": 13,
+            "type": "Response",
+            "description": "系統啟動通訊介面"
+          },
+          {
+            "event_id": 712,
+            "sequence_no": 14,
+            "type": "Process",
+            "description": "系統記錄顧客與外送員通訊記錄"
+          },
+          {
+            "event_id": 713,
+            "sequence_no": 15,
+            "type": "Process",
+            "description": "系統持續監控訂單狀態"
+          },
+          {
+            "event_id": 714,
+            "sequence_no": 16,
+            "type": "Response",
+            "description": "系統即時更新訂單狀態"
+          }
+        ]
+      },
+      "例外程序": {
+        "事件列表": [
+          {
+            "event_id": 715,
+            "sequence_no": 1,
+            "type": "Request",
+            "description": "顧客輸入訂單編號"
+          },
+          {
+            "event_id": 716,
+            "sequence_no": 2,
+            "type": "Process",
+            "description": "系統驗證訂單編號"
+          },
+          {
+            "event_id": 717,
+            "sequence_no": 3,
+            "type": "Response",
+            "description": "系統顯示錯誤訊息(訂單編號錯誤)，引導重新輸入"
+          },
+          {
+            "event_id": 718,
+            "sequence_no": 4,
+            "type": "Request",
+            "description": "顧客查看訂單狀態"
+          },
+          {
+            "event_id": 719,
+            "sequence_no": 5,
+            "type": "Process",
+            "description": "系統嘗試取得訂單狀態"
+          },
+          {
+            "event_id": 720,
+            "sequence_no": 6,
+            "type": "Response",
+            "description": "系統顯示錯誤訊息(無法取得訂單狀態)，建議稍後再試或聯繫客服"
+          },
+          {
+            "event_id": 721,
+            "sequence_no": 7,
+            "type": "Request",
+            "description": "顧客請求聯繫外送員"
+          },
+          {
+            "event_id": 722,
+            "sequence_no": 8,
+            "type": "Process",
+            "description": "系統嘗試取得外送員資訊"
+          },
+          {
+            "event_id": 723,
+            "sequence_no": 9,
+            "type": "Response",
+            "description": "系統顯示錯誤訊息(外送員資訊無法取得)，建議聯繫客服"
+          },
+          {
+            "event_id": 724,
+            "sequence_no": 10,
+            "type": "Request",
+            "description": "顧客嘗試聯繫外送員"
+          },
+          {
+            "event_id": 725,
+            "sequence_no": 11,
+            "type": "Process",
+            "description": "系統檢查通訊功能"
+          },
+          {
+            "event_id": 726,
+            "sequence_no": 12,
+            "type": "Response",
+            "description": "系統顯示錯誤訊息(通訊功能故障)，建議稍後再試或聯繫客服"
+          },
+          {
+            "event_id": 727,
+            "sequence_no": 13,
+            "type": "Request",
+            "description": "顧客查看訂單狀態"
+          },
+          {
+            "event_id": 728,
+            "sequence_no": 14,
+            "type": "Process",
+            "description": "系統檢查網路連線"
+          },
+          {
+            "event_id": 729,
+            "sequence_no": 15,
+            "type": "Response",
+            "description": "系統顯示錯誤訊息(網路連線不穩定)，建議檢查網路連線"
+          },
+          {
+            "event_id": 730,
+            "sequence_no": 16,
+            "type": "Request",
+            "description": "系統監控訂單狀態"
+          },
+          {
+            "event_id": 731,
+            "sequence_no": 17,
+            "type": "Process",
+            "description": "系統偵測到訂單狀態異常(取消或延遲)"
+          },
+          {
+            "event_id": 732,
+            "sequence_no": 18,
+            "type": "Response",
+            "description": "系統顯示異常狀態訊息，提供解決方案或聯繫客服途徑"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "use_case_id": 13,
+    "use_case_name": "管理菜單與餐點價格",
+    "event_summary": {
+      "正常程序": {
+        "事件列表": [
+          {
+            "event_id": 733,
+            "sequence_no": 1,
+            "type": "Request",
+            "description": "餐廳業者輸入帳號密碼並點擊登入"
+          },
+          {
+            "event_id": 734,
+            "sequence_no": 2,
+            "type": "Process",
+            "description": "系統驗證帳號密碼"
+          },
+          {
+            "event_id": 735,
+            "sequence_no": 3,
+            "type": "Response",
+            "description": "顯示菜單管理介面或錯誤訊息"
+          },
+          {
+            "event_id": 736,
+            "sequence_no": 4,
+            "type": "Request",
+            "description": "餐廳業者選擇『新增餐點』、『修改餐點』或『刪除餐點』"
+          },
+          {
+            "event_id": 737,
+            "sequence_no": 5,
+            "type": "Process",
+            "description": "系統根據選擇顯示對應操作介面"
+          },
+          {
+            "event_id": 738,
+            "sequence_no": 6,
+            "type": "Response",
+            "description": "顯示對應操作介面"
+          },
+          {
+            "event_id": 739,
+            "sequence_no": 7,
+            "type": "Request",
+            "description": "餐廳業者輸入餐點名稱、價格、圖片、描述等資訊並點擊確認(新增餐點)"
+          },
+          {
+            "event_id": 740,
+            "sequence_no": 8,
+            "type": "Process",
+            "description": "系統驗證輸入資訊並新增餐點至資料庫"
+          },
+          {
+            "event_id": 741,
+            "sequence_no": 9,
+            "type": "Response",
+            "description": "顯示新增成功訊息或錯誤訊息"
+          },
+          {
+            "event_id": 742,
+            "sequence_no": 10,
+            "type": "Request",
+            "description": "餐廳業者選擇欲修改的餐點並修改相關資訊，點擊確認(修改餐點)"
+          },
+          {
+            "event_id": 743,
+            "sequence_no": 11,
+            "type": "Process",
+            "description": "系統驗證輸入資訊並更新餐點資料庫"
+          },
+          {
+            "event_id": 744,
+            "sequence_no": 12,
+            "type": "Response",
+            "description": "顯示修改成功訊息或錯誤訊息"
+          },
+          {
+            "event_id": 745,
+            "sequence_no": 13,
+            "type": "Request",
+            "description": "餐廳業者選擇欲刪除的餐點並點擊確認(刪除餐點)"
+          },
+          {
+            "event_id": 746,
+            "sequence_no": 14,
+            "type": "Process",
+            "description": "系統刪除餐點資料庫中的資料"
+          },
+          {
+            "event_id": 747,
+            "sequence_no": 15,
+            "type": "Response",
+            "description": "顯示刪除成功訊息或錯誤訊息"
+          },
+          {
+            "event_id": 748,
+            "sequence_no": 16,
+            "type": "Process",
+            "description": "系統重新讀取並顯示更新後的菜單"
+          },
+          {
+            "event_id": 749,
+            "sequence_no": 17,
+            "type": "Response",
+            "description": "顯示更新後的菜單"
+          }
+        ]
+      },
+      "例外程序": {
+        "事件列表": [
+          {
+            "event_id": 750,
+            "sequence_no": 1,
+            "type": "Request",
+            "description": "使用者輸入使用者名稱及密碼進行登入"
+          },
+          {
+            "event_id": 751,
+            "sequence_no": 2,
+            "type": "Process",
+            "description": "系統驗證使用者名稱及密碼"
+          },
+          {
+            "event_id": 752,
+            "sequence_no": 3,
+            "type": "Response",
+            "description": "系統顯示登入失敗訊息並要求重新登入"
+          },
+          {
+            "event_id": 753,
+            "sequence_no": 4,
+            "type": "Request",
+            "description": "使用者輸入新增餐點資訊"
+          },
+          {
+            "event_id": 754,
+            "sequence_no": 5,
+            "type": "Process",
+            "description": "系統驗證新增餐點資訊完整性及格式"
+          },
+          {
+            "event_id": 755,
+            "sequence_no": 6,
+            "type": "Response",
+            "description": "系統顯示錯誤訊息並提示使用者修正錯誤"
+          },
+          {
+            "event_id": 756,
+            "sequence_no": 7,
+            "type": "Request",
+            "description": "使用者提交修改餐點請求"
+          },
+          {
+            "event_id": 757,
+            "sequence_no": 8,
+            "type": "Process",
+            "description": "系統嘗試修改餐點資料，並檢查資料庫錯誤或權限"
+          },
+          {
+            "event_id": 758,
+            "sequence_no": 9,
+            "type": "Response",
+            "description": "系統顯示錯誤訊息並記錄錯誤日誌"
+          },
+          {
+            "event_id": 759,
+            "sequence_no": 10,
+            "type": "Request",
+            "description": "使用者提交刪除餐點請求"
+          },
+          {
+            "event_id": 760,
+            "sequence_no": 11,
+            "type": "Process",
+            "description": "系統檢查餐點是否存在及是否被其他訂單使用"
+          },
+          {
+            "event_id": 761,
+            "sequence_no": 12,
+            "type": "Response",
+            "description": "系統顯示錯誤訊息並說明原因"
+          },
+          {
+            "event_id": 762,
+            "sequence_no": 13,
+            "type": "Request",
+            "description": "使用者上傳餐點圖片"
+          },
+          {
+            "event_id": 763,
+            "sequence_no": 14,
+            "type": "Process",
+            "description": "系統驗證圖片格式及大小"
+          },
+          {
+            "event_id": 764,
+            "sequence_no": 15,
+            "type": "Response",
+            "description": "系統顯示錯誤訊息並提示允許的圖片格式及大小"
+          },
+          {
+            "event_id": 765,
+            "sequence_no": 16,
+            "type": "Request",
+            "description": "使用者輸入餐點價格"
+          },
+          {
+            "event_id": 766,
+            "sequence_no": 17,
+            "type": "Process",
+            "description": "系統驗證價格是否為正數"
+          },
+          {
+            "event_id": 767,
+            "sequence_no": 18,
+            "type": "Response",
+            "description": "系統顯示錯誤訊息並提示正確的價格格式"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "use_case_id": 14,
+    "use_case_name": "接單與準備餐點",
+    "event_summary": {
+      "正常程序": {
+        "事件列表": [
+          {
+            "event_id": 768,
+            "sequence_no": 1,
+            "type": "Request",
+            "description": "接收訂單通知"
+          },
+          {
+            "event_id": 769,
+            "sequence_no": 2,
+            "type": "Process",
+            "description": "驗證訂單資訊完整性"
+          },
+          {
+            "event_id": 770,
+            "sequence_no": 3,
+            "type": "Response",
+            "description": "顯示訂單詳情"
+          },
+          {
+            "event_id": 771,
+            "sequence_no": 4,
+            "type": "Request",
+            "description": "輸入訂單至廚房系統"
+          },
+          {
+            "event_id": 772,
+            "sequence_no": 5,
+            "type": "Process",
+            "description": "將訂單資訊傳送至廚房"
+          },
+          {
+            "event_id": 773,
+            "sequence_no": 6,
+            "type": "Response",
+            "description": "確認訂單已送達廚房"
+          },
+          {
+            "event_id": 774,
+            "sequence_no": 7,
+            "type": "Process",
+            "description": "廚房根據訂單準備餐點"
+          },
+          {
+            "event_id": 775,
+            "sequence_no": 8,
+            "type": "Process",
+            "description": "廚房確認餐點符合訂單要求"
+          },
+          {
+            "event_id": 776,
+            "sequence_no": 9,
+            "type": "Response",
+            "description": "廚房回報餐點製作完成"
+          },
+          {
+            "event_id": 777,
+            "sequence_no": 10,
+            "type": "Process",
+            "description": "打包餐點"
+          },
+          {
+            "event_id": 778,
+            "sequence_no": 11,
+            "type": "Request",
+            "description": "更新訂單狀態為已準備完成"
+          },
+          {
+            "event_id": 779,
+            "sequence_no": 12,
+            "type": "Process",
+            "description": "更新訂單狀態至資料庫"
+          },
+          {
+            "event_id": 780,
+            "sequence_no": 13,
+            "type": "Response",
+            "description": "顯示訂單狀態已更新"
+          },
+          {
+            "event_id": 781,
+            "sequence_no": 14,
+            "type": "Request",
+            "description": "通知顧客取餐或送餐"
+          },
+          {
+            "event_id": 782,
+            "sequence_no": 15,
+            "type": "Process",
+            "description": "發送取餐或送餐通知"
+          },
+          {
+            "event_id": 783,
+            "sequence_no": 16,
+            "type": "Response",
+            "description": "確認通知已發送"
+          }
+        ]
+      },
+      "例外程序": {
+        "事件列表": [
+          {
+            "event_id": 784,
+            "sequence_no": 1,
+            "type": "Request",
+            "description": "餐廳業者檢測到訂單內容錯誤或不完整"
+          },
+          {
+            "event_id": 785,
+            "sequence_no": 2,
+            "type": "Process",
+            "description": "系統提示餐廳業者聯繫顧客確認訂單資訊"
+          },
+          {
+            "event_id": 786,
+            "sequence_no": 3,
+            "type": "Response",
+            "description": "系統顯示顧客聯繫資訊及訂單內容"
+          },
+          {
+            "event_id": 787,
+            "sequence_no": 4,
+            "type": "Request",
+            "description": "餐廳業者輸入確認後的訂單資訊或重新接單"
+          },
+          {
+            "event_id": 788,
+            "sequence_no": 5,
+            "type": "Process",
+            "description": "系統更新訂單資訊"
+          },
+          {
+            "event_id": 789,
+            "sequence_no": 6,
+            "type": "Response",
+            "description": "系統顯示更新後的訂單資訊"
+          },
+          {
+            "event_id": 790,
+            "sequence_no": 7,
+            "type": "Request",
+            "description": "系統檢測到缺貨"
+          },
+          {
+            "event_id": 791,
+            "sequence_no": 8,
+            "type": "Process",
+            "description": "系統提示餐廳業者聯繫顧客告知缺貨情況"
+          },
+          {
+            "event_id": 792,
+            "sequence_no": 9,
+            "type": "Response",
+            "description": "系統顯示顧客聯繫資訊及缺貨品項"
+          },
+          {
+            "event_id": 793,
+            "sequence_no": 10,
+            "type": "Request",
+            "description": "餐廳業者選擇替代方案或取消訂單"
+          },
+          {
+            "event_id": 794,
+            "sequence_no": 11,
+            "type": "Process",
+            "description": "系統更新訂單狀態及相關資訊"
+          },
+          {
+            "event_id": 795,
+            "sequence_no": 12,
+            "type": "Response",
+            "description": "系統顯示更新後的訂單狀態"
+          },
+          {
+            "event_id": 796,
+            "sequence_no": 13,
+            "type": "Request",
+            "description": "廚房人員回報餐點製作錯誤"
+          },
+          {
+            "event_id": 797,
+            "sequence_no": 14,
+            "type": "Process",
+            "description": "系統記錄餐點製作錯誤，並提示重新製作"
+          },
+          {
+            "event_id": 798,
+            "sequence_no": 15,
+            "type": "Response",
+            "description": "系統顯示錯誤餐點資訊"
+          },
+          {
+            "event_id": 799,
+            "sequence_no": 16,
+            "type": "Request",
+            "description": "廚房人員完成餐點重新製作"
+          },
+          {
+            "event_id": 800,
+            "sequence_no": 17,
+            "type": "Process",
+            "description": "系統更新訂單狀態為已完成，並記錄錯誤資訊"
+          },
+          {
+            "event_id": 801,
+            "sequence_no": 18,
+            "type": "Response",
+            "description": "系統顯示更新後的訂單狀態"
+          },
+          {
+            "event_id": 802,
+            "sequence_no": 19,
+            "type": "Request",
+            "description": "餐廳業者檢測到系統故障"
+          },
+          {
+            "event_id": 803,
+            "sequence_no": 20,
+            "type": "Process",
+            "description": "系統嘗試切換至備份系統或提示人工處理"
+          },
+          {
+            "event_id": 804,
+            "sequence_no": 21,
+            "type": "Response",
+            "description": "系統顯示備份系統狀態或人工處理提示"
+          },
+          {
+            "event_id": 805,
+            "sequence_no": 22,
+            "type": "Request",
+            "description": "餐廳業者完成訂單處理（備份系統或人工）"
+          },
+          {
+            "event_id": 806,
+            "sequence_no": 23,
+            "type": "Process",
+            "description": "系統記錄訂單處理過程"
+          },
+          {
+            "event_id": 807,
+            "sequence_no": 24,
+            "type": "Response",
+            "description": "系統顯示訂單處理結果"
+          },
+          {
+            "event_id": 808,
+            "sequence_no": 25,
+            "type": "Request",
+            "description": "顧客請求取消訂單"
+          },
+          {
+            "event_id": 809,
+            "sequence_no": 26,
+            "type": "Process",
+            "description": "系統更新訂單狀態為已取消，並根據餐廳政策處理退款或其他相關事宜"
+          },
+          {
+            "event_id": 810,
+            "sequence_no": 27,
+            "type": "Response",
+            "description": "系統顯示更新後的訂單狀態及退款或其他相關資訊"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "use_case_id": 15,
+    "use_case_name": "查看訂單歷史與銷售報表",
+    "event_summary": {
+      "正常程序": {
+        "事件列表": [
+          {
+            "event_id": 811,
+            "sequence_no": 1,
+            "type": "Request",
+            "description": "餐廳業者輸入帳號密碼並點擊登入"
+          },
+          {
+            "event_id": 812,
+            "sequence_no": 2,
+            "type": "Process",
+            "description": "系統驗證帳號密碼"
+          },
+          {
+            "event_id": 813,
+            "sequence_no": 3,
+            "type": "Response",
+            "description": "顯示訂單歷史查詢介面或錯誤訊息"
+          },
+          {
+            "event_id": 814,
+            "sequence_no": 4,
+            "type": "Request",
+            "description": "餐廳業者選擇查詢日期範圍"
+          },
+          {
+            "event_id": 815,
+            "sequence_no": 5,
+            "type": "Process",
+            "description": "系統根據選擇的日期範圍查詢訂單資料"
+          },
+          {
+            "event_id": 816,
+            "sequence_no": 6,
+            "type": "Response",
+            "description": "顯示符合條件的訂單詳細資訊"
+          },
+          {
+            "event_id": 817,
+            "sequence_no": 7,
+            "type": "Request",
+            "description": "餐廳業者選擇下載訂單歷史記錄"
+          },
+          {
+            "event_id": 818,
+            "sequence_no": 8,
+            "type": "Process",
+            "description": "系統產生CSV或PDF檔案"
+          },
+          {
+            "event_id": 819,
+            "sequence_no": 9,
+            "type": "Response",
+            "description": "下載訂單歷史記錄檔案"
+          },
+          {
+            "event_id": 820,
+            "sequence_no": 10,
+            "type": "Request",
+            "description": "餐廳業者選擇報表類型"
+          },
+          {
+            "event_id": 821,
+            "sequence_no": 11,
+            "type": "Process",
+            "description": "系統根據選擇的報表類型產生銷售報表"
+          },
+          {
+            "event_id": 822,
+            "sequence_no": 12,
+            "type": "Response",
+            "description": "顯示銷售報表及圖表視覺化呈現"
+          },
+          {
+            "event_id": 823,
+            "sequence_no": 13,
+            "type": "Request",
+            "description": "餐廳業者選擇下載銷售報表"
+          },
+          {
+            "event_id": 824,
+            "sequence_no": 14,
+            "type": "Process",
+            "description": "系統產生CSV或PDF檔案"
+          },
+          {
+            "event_id": 825,
+            "sequence_no": 15,
+            "type": "Response",
+            "description": "下載銷售報表檔案"
+          },
+          {
+            "event_id": 826,
+            "sequence_no": 16,
+            "type": "Request",
+            "description": "餐廳業者點擊登出"
+          },
+          {
+            "event_id": 827,
+            "sequence_no": 17,
+            "type": "Process",
+            "description": "系統清除使用者Session"
+          },
+          {
+            "event_id": 828,
+            "sequence_no": 18,
+            "type": "Response",
+            "description": "登出系統"
+          }
+        ]
+      },
+      "例外程序": {
+        "事件列表": [
+          {
+            "event_id": 829,
+            "sequence_no": 1,
+            "type": "Request",
+            "description": "使用者輸入帳號密碼進行登入"
+          },
+          {
+            "event_id": 830,
+            "sequence_no": 2,
+            "type": "Process",
+            "description": "系統驗證帳號密碼"
+          },
+          {
+            "event_id": 831,
+            "sequence_no": 3,
+            "type": "Response",
+            "description": "系統顯示帳號密碼錯誤訊息，並要求重新登入"
+          },
+          {
+            "event_id": 832,
+            "sequence_no": 4,
+            "type": "Request",
+            "description": "使用者嘗試存取訂單歷史與銷售報表"
+          },
+          {
+            "event_id": 833,
+            "sequence_no": 5,
+            "type": "Process",
+            "description": "系統檢查使用者權限"
+          },
+          {
+            "event_id": 834,
+            "sequence_no": 6,
+            "type": "Response",
+            "description": "系統顯示權限不足的錯誤訊息"
+          },
+          {
+            "event_id": 835,
+            "sequence_no": 7,
+            "type": "Request",
+            "description": "系統嘗試連接資料庫並查詢資料"
+          },
+          {
+            "event_id": 836,
+            "sequence_no": 8,
+            "type": "Process",
+            "description": "系統發生資料庫連線或查詢錯誤"
+          },
+          {
+            "event_id": 837,
+            "sequence_no": 9,
+            "type": "Response",
+            "description": "系統顯示資料庫錯誤訊息並記錄錯誤日誌"
+          },
+          {
+            "event_id": 838,
+            "sequence_no": 10,
+            "type": "Request",
+            "description": "使用者請求下載CSV/PDF檔案"
+          },
+          {
+            "event_id": 839,
+            "sequence_no": 11,
+            "type": "Process",
+            "description": "系統嘗試產生或下載CSV/PDF檔案"
+          },
+          {
+            "event_id": 840,
+            "sequence_no": 12,
+            "type": "Response",
+            "description": "系統顯示檔案下載失敗訊息並記錄錯誤日誌"
+          },
+          {
+            "event_id": 841,
+            "sequence_no": 13,
+            "type": "Request",
+            "description": "使用者操作系統"
+          },
+          {
+            "event_id": 842,
+            "sequence_no": 14,
+            "type": "Process",
+            "description": "系統偵測到網路連線中斷"
+          },
+          {
+            "event_id": 843,
+            "sequence_no": 15,
+            "type": "Response",
+            "description": "系統顯示網路連線中斷訊息並要求重新連線"
+          },
+          {
+            "event_id": 844,
+            "sequence_no": 16,
+            "type": "Request",
+            "description": "系統執行程式碼"
+          },
+          {
+            "event_id": 845,
+            "sequence_no": 17,
+            "type": "Process",
+            "description": "系統發生未預期錯誤"
+          },
+          {
+            "event_id": 846,
+            "sequence_no": 18,
+            "type": "Response",
+            "description": "系統顯示系統錯誤訊息，記錄錯誤日誌，並建議聯繫技術支援"
+          }
+        ]
+      }
+    }
+  }
+]

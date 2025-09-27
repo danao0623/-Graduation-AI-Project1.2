@@ -1,0 +1,10 @@
+classDiagram
+LoginUI --> AuthenticationController
+CustomerInfoUI --> CustomerSearchController
+ReplyUI --> ReplyController
+CustomerSearchController --> Customer
+ReplyController --> Reply
+Inquiry --> Reply
+Customer --> Inquiry
+AuthenticationController --> Staff
+ReplyController --> SystemLog
